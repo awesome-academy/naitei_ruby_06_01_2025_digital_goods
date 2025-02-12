@@ -1,4 +1,22 @@
 default: &default
   app_url: "http://localhost:3000"
+  user:
+    validate:
+      email:
+        format: "\\A[\\w+\\-.]+@[a-z\\d\\-.]+\\.[a-z]+\\z"
+        maxLength: 255
+      user_name:
+        maxLength: 50
+      full_name:
+        maxLength: 255
+      password:
+        minLength: 8
+      telephone:
+        format: "\\A(\\+84|0)(\\d{9,10})\\z"
+  view:
+    header:
+      icon_size: 22
+      icon_location_size: 35
+      icon_arrow_down: 15
 development:
   <<: *default

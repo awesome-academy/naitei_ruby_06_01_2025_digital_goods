@@ -1,33 +1,68 @@
-# Files in the config/locales directory are used for internationalization
-# and are automatically loaded by Rails. If you want to use locales other
-# than English, add the necessary files in this directory.
-#
-# To use the locales, use `I18n.t`:
-#
-#     I18n.t "hello"
-#
-# In views, this is aliased to just `t`:
-#
-#     <%= t("hello") %>
-#
-# To use a different locale, set it with `I18n.locale`:
-#
-#     I18n.locale = :es
-#
-# This would use the information in config/locales/es.yml.
-#
-# The following keys must be escaped otherwise they will not be retrieved by
-# the default I18n backend:
-#
-# true, false, on, off, yes, no
-#
-# Instead, surround them with single quotes.
-#
-# en:
-#   "true": "foo"
-#
-# To learn more, please read the Rails Internationalization guide
-# available at https://guides.rubyonrails.org/i18n.html.
-
 en:
-  hello: "Hello world"
+  title:
+    default: "DigiHub"
+    sign_up: "Sign Up"
+    sign_in: "Sign In"
+  view:
+    header: 
+      category: "Category"
+      see_price_at: "See Price At"
+      call_to_buy: "Call To Buy"
+      order_lookup: "Order Lookup"
+      shopping_cart: "Shopping Cart"
+      placeholder_search: "What are you looking for?"
+    sign_in:
+      title: "Sign In"
+      sign_up: "Sign Up"
+      forgot_password: "Forgot Password"
+      remember_me: "Remember me"
+      register: "Register"
+    sign_up:
+      title: "Sign Up"
+      sign_in: "Sign In"
+      you_have_an_account: "Already have an account?"
+      login_now: "Login now"
+  form:
+    label:
+      user:
+        full_name: "Full Name"
+        user_name: "Username"
+        telephone: "Phone Number"
+        email: "Email"
+        password: "Password"
+        password_confirmation: "Confirm Password"
+        newsletter: "Subscribe to promotional newsletters from CellphoneS"
+    placeholder:
+      full_name: "Enter your full name"
+      user_name: "Enter your username"
+      telephone: "Enter your phone number"
+      email: "Enter your email"
+      password: "Enter your password"
+      password_confirmation: "Re-enter your password"
+  messages:
+    email_notice: "VAT invoices for purchases will be sent to this email."
+    password_notice: "(*) Password must be at least 8 characters long"
+    terms: "I agree to the %{terms} and %{privacy_policy}"
+    terms_of_use: "Terms of Use"
+    privacy_policy: "Privacy Policy"
+  activerecord:
+    errors:
+      models:
+        user:
+          attributes:
+            password_confirmation:
+              confirmation: "Password confirmation does not match"
+      messages:
+        confirmation: "Confirmation does not match"
+        record_invalid: "Validation failed: %{errors}"
+        taken: "has already been taken"
+        blank: "can't be blank"
+        too_short: "is too short (minimum is %{count} characters)"
+        too_long: "is too long (maximum is %{count} characters)"
+        invalid: "is invalid"
+  alert:
+    form_contains_error: "The form contains %{count} error"
+  flash:
+    sign_up:
+      success: "Sign up successfully"
+      fail: "Sign up failed"

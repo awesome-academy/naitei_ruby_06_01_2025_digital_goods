@@ -1,0 +1,148 @@
+@import '../variables';
+
+.login-form {
+  max-width: 800px;
+  height: 90%;
+  margin: 0 auto;
+
+  &__container {
+    height: 100%;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+  }
+
+  .digihub_logo {
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    object-fit: cover;
+    margin-bottom: 20px;
+
+    img {
+      max-width: 340px;
+    }
+  }
+
+  .login-options {
+    width: 100%;
+    margin-top: 20px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+
+    a {
+      color: $primary-color;
+      text-decoration: none;
+      font-size: 14px;
+      font-weight: 500;
+
+      &:hover {
+        text-decoration: underline;
+      }
+
+      &.forgot-password {
+        color: $gray-light-color-2;
+      }
+    }
+  }
+
+  .form-group {
+    width: 600px;
+    margin-bottom: 15px;
+
+    .form-control {
+      width: 100%;
+      padding: 12px;
+      border: 1px solid $gray-light-color-3;
+      border-radius: 8px;
+      font-size: 14px;
+      transition: border-color 0.3s ease;
+
+      &:focus {
+        border-color: $primary-color;
+        outline: none;
+        box-shadow: 0 0 0 2px $focus-color;
+      }
+
+      &::placeholder {
+        color: $gray-light-color-1;
+      }
+    }
+
+    .form-text {
+      margin-top: 5px;
+      font-size: 12px;
+      color: $gray-light-color-2;
+      font-style: italic;
+    }
+  }
+
+  .form-check {
+    margin-bottom: 15px;
+    display: flex;
+    align-items: flex-start;
+    gap: 8px;
+
+    .form-check-input {
+      margin-top: 4px;
+    }
+
+    .form-check-label {
+      font-size: 14px;
+      color: $black-color;
+
+      a {
+        color: $primary-color;
+        text-decoration: none;
+
+        &:hover {
+          text-decoration: underline;
+        }
+      }
+    }
+  }
+
+  .btn-login {
+    width: 100%;
+    padding: 10px;
+    background-color: $primary-color;
+    color: $white-color;
+    border: none;
+    border-radius: 8px;
+    font-size: 16px;
+    font-weight: 500;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+
+    &:hover {
+      background-color: darken($primary-color, 10%);
+    }
+  }
+}
+
+
+@media (max-width: 576px) {
+  .login-form {
+    width: 100%;
+    padding: 15px;
+
+    .form-group {
+      width: 100% !important;
+      margin-bottom: 15px;
+    }
+
+    .form-check {
+      margin-bottom: 10px;
+    }
+
+    .login-options {
+      flex-direction: column;
+      gap: 10px;
+      text-align: center;
+    }
+  }
+}

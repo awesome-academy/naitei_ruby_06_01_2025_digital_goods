@@ -1,0 +1,68 @@
+vi:
+  title:
+    default: "DigiHub"
+    sign_up: "Đăng ký"
+    sign_in: "Đăng nhập"
+  view:
+    header: 
+      category: "Danh mục"
+      see_price_at: "Xem giá tại"
+      call_to_buy: "Gọi mua hàng"
+      order_lookup: "Tra cứu đơn hàng"
+      shopping_cart: "Giỏ hàng"
+      placeholder_search: "Bạn cần tìm gì?"
+    sign_in:
+      title: "Đăng nhập"
+      sign_up: "Đăng ký"
+      forgot_password: "Quên mật khẩu"
+      remember_me: "Ghi nhớ tôi"
+      register: "Đăng ký"
+    sign_up:
+      title: "Đăng ký"
+      sign_in: "Đăng nhập"
+      you_have_an_account: "Bạn đã có tài khoản?"
+      login_now: "Đăng nhập ngay"
+  form:
+    label:
+      user:
+        full_name: "Họ và tên"
+        user_name: "Tài khoản"
+        telephone: "Số điện thoại"
+        email: "Email"
+        password: "Mật khẩu"
+        password_confirmation: "Nhập lại mật khẩu"
+        newsletter: "Đăng ký nhận bản tin khuyến mãi từ DigiHub"
+    placeholder:
+      full_name: "Nhập họ và tên"
+      user_name: "Nhập tài khoản"
+      telephone: "Nhập số điện thoại"
+      email: "Nhập email"
+      password: "Nhập mật khẩu"
+      password_confirmation: "Nhập lại mật khẩu"
+  messages:
+    email_notice: "Hóa đơn VAT khi mua hàng sẽ được gửi qua email này"
+    password_notice: "(*) Mật khẩu tối thiểu 8 ký tự"
+    terms: "Tôi đồng ý với các %{terms} và %{privacy_policy}"
+    terms_of_use: "điều khoản sử dụng"
+    privacy_policy: "chính sách bảo mật"
+  activerecord:
+    errors:
+      models:
+        user:
+          attributes:
+            password_confirmation:
+              confirmation: "Xác nhận mật khẩu không khớp"
+      messages:
+        confirmation: "Xác nhận không khớp"
+        record_invalid: "Bản ghi không hợp lệ: %{errors}"
+        taken: "đã được sử dụng"
+        blank: "không được để trống"
+        too_short: "quá ngắn (tối thiểu %{count} ký tự)"
+        too_long: "quá dài (tối đa %{count} ký tự)"
+        invalid: "không hợp lệ"
+  alert:
+    form_contains_error: "Biểu mẫu có %{count} lỗi"
+  flash:
+    sign_up:
+      success: "Đăng ký thành công"
+      fail: "Đăng ký thất bại"
