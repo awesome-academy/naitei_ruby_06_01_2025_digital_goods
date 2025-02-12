@@ -1,0 +1,20 @@
+@import 'bootstrap-sprockets';
+@import 'bootstrap';
+@import './variables';
+
+.container {
+  width: 100vw;
+  height: 100vh;
+  padding: 0;
+  overflow-x: hidden;
+}
+
+.alert {
+  margin-top: 64px;
+  width: 100%;
+}
+
+.alert-error {
+  color: $alert-waring-color;
+  background-color: $alert-waring-background;
+}

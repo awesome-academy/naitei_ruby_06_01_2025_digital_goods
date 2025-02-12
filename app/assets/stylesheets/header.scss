@@ -1,0 +1,251 @@
+@import './_variables.scss';
+
+.header {
+  background-color: $primary-color;
+  height: 64px;
+  width: 100%;
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: 1000;
+
+  &__container {
+    max-width: 1200px;
+    height: 100%;
+    margin: 0 auto;
+    padding: 0 15px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 16px;
+  }
+
+  &__logo {
+    a {
+      color: $white-color;
+      text-decoration: none;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 4px;
+      font-size: 25px;
+      font-weight: 500;
+      text-align: center;
+
+      i {
+        font-size: 20px;
+      }
+
+      &:hover {
+        opacity: 0.9;
+      }
+    }
+  }
+
+  &__menu {
+    align-items: center;
+    border-radius: 10px;
+    cursor: pointer;
+    display: flex;
+    height: 42px;
+    padding: 5px 8px;
+    position: relative;
+    background: $gray-light-color-5;
+
+    .header__menu-item {
+      color: $white-color;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      text-decoration: none;
+      font-size: 14px;
+
+      i {
+        font-size: 18px;
+      }
+    }
+  }
+
+  &__location {
+    align-items: center;
+    background: $gray-light-color-5;
+    border-radius: 10px;
+    cursor: pointer;
+    display: flex !important;
+    float: left;
+    padding: 3px 6px;
+    position: relative;
+    text-align: center;
+    width: 135px;
+    flex-direction: row;
+    justify-content: flex-start;
+    gap: 6px;
+    height: 44px;
+
+    .icon-location {
+      color: $white-color;
+      font-size: 23px;
+    }
+
+    .title-group {
+      padding-right: 5px;
+      width: 100%;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: start;
+      gap: 2px;
+      color: $white-color;
+
+      &__title {
+        width: 100%;
+        font-size: 12px;
+        font-weight: 400;
+        display: flex;
+        flex-direction: row;
+        justify-content: space-between;
+        align-items: center;
+      }
+
+      &__subtitle {
+        font-size: 15px;
+      }
+    }
+
+  }
+
+  &__search {
+    flex: 1;
+    max-width: 500px;
+    position: relative;
+
+    form {
+      display: flex;
+      width: 100%;
+    }
+
+    .search-input {
+      flex: 1;
+      height: 40px;
+      padding: 0 16px;
+      border: none;
+      border-radius: 8px 0 0 8px;
+      outline: none;
+      font-size: 14px;
+
+      &::placeholder {
+        color: $placeholder-color;
+      }
+    }
+
+    .search-button {
+      width: 50px;
+      height: 40px;
+      border: none;
+      background: $white-color;
+      border-radius: 0 8px 8px 0;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+
+      .icon-search {
+        color: $primary-color;
+        font-size: 18px;
+      }
+    }
+  }
+
+  &__actions {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+
+    >div {
+      a {
+        color: $white-color;
+        text-decoration: none;
+        display: flex;
+        flex-direction: row;
+        justify-content: flex-start;
+        align-items: center;
+        gap: 4px;
+        font-size: 12px;
+        text-align: center;
+        font-weight: bold;
+        padding: 3px 8px;
+        height: 40px;
+
+        .title-group {
+          max-width: 80px;
+          display: flex;
+          flex-direction: column;
+          justify-content: center;
+          align-items: center;
+        }
+
+        &:hover {
+          opacity: 0.9;
+          background: $gray-light-color-5;
+          border-radius: 10px;
+        }
+      }
+    }
+  }
+}
+
+@media (max-width: 1200px) {
+  .header {
+    &__container {
+      max-width: 100%;
+    }
+  }
+}
+
+@media (max-width: 992px) {
+  .header {
+    &__search {
+      max-width: 400px;
+    }
+
+    &__menu {
+      display: none;
+    }
+  }
+}
+
+@media (max-width: 768px) {
+  .header {
+    &__search {
+      max-width: 300px;
+    }
+
+    &__location span {
+      display: none;
+    }
+
+    &__actions {
+      gap: 8px;
+
+      span {
+        display: none;
+      }
+    }
+  }
+}
+
+@media (max-width: 576px) {
+  .header {
+    &__logo>a {
+      font-size: 20px;
+    }
+
+    &__search {
+      max-width: 200px;
+    }
+
+    &__actions {
+      gap: 4px;
+    }
+  }
+}

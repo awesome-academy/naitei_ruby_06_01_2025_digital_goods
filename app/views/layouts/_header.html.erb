@@ -1,0 +1,67 @@
+<div class="header">
+  <div class="header__container">
+    <div class="header__logo">
+      <%= link_to "#" do %>
+        <span>DigiHub</span>
+      <% end %>
+    </div>
+
+    <div class="header__menu">
+      <%= link_to "#", class: "header__menu-item" do %>
+        <%= bootstrap_icon "bookmarks-fill", height: Settings.default.view.header.icon_size %>
+        <span><%= t("view.header.category") %></span>
+      <% end %>
+    </div>
+
+    <div class="header__location">
+      <%= bootstrap_icon "geo-alt", height: Settings.default.view.header.icon_location_size, class:"icon-location" %>
+      <div class="title-group">
+        <span class="title-group__title">
+          <%= t("view.header.see_price_at") %>
+          <%= bootstrap_icon "caret-down", height: Settings.default.view.header.icon_arrow_down %>
+        </span>
+        <span class="title-group__subtitle">Hà Nội</span>
+      </div>
+    </div>
+
+    <div class="header__search">
+      <%= form_with url: "#", method: :get, local: true do |f| %>
+      <%= f.text_field :q, placeholder: t("view.header.placeholder_search"), class: "search-input" %>
+        <%= f.button class: "search-button" do %>
+          <%= bootstrap_icon "search", height: Settings.default.view.header.icon_size, class:"icon-search"  %>
+        <% end %>
+      <% end %>
+    </div>
+
+
+    <div class="header__actions">
+      <div class="header__hotline">
+        <%= link_to "#" do %>
+          <%= bootstrap_icon "telephone", height: Settings.default.view.header.icon_size, class:"action-logo" %>
+          <div class="title-group">
+            <span class="title-group__title"><%= t("view.header.call_to_buy") %></span>
+            <span class="title-group__subtitle">1800 1234</span>
+          </div>
+        <% end %>
+      </div>
+
+      <div class="header__track">
+        <%= link_to "#" do %>
+          <%= bootstrap_icon "truck", height: Settings.default.view.header.icon_size, class:"action-logo" %>
+          <div class="title-group">
+            <span><%= t("view.header.order_lookup") %></span>
+          </div>
+        <% end %>
+      </div>
+
+      <div class="header__cart">
+        <%= link_to "#" do %>
+          <%= bootstrap_icon "cart", height: Settings.default.view.header.icon_size %>
+          <div class="title-group">
+            <span><%= t("view.header.shopping_cart") %></span>
+          </div>
+        <% end %>
+      </div>
+    </div>
+  </div>
+</div>
