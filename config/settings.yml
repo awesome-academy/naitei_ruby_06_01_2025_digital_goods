@@ -18,5 +18,15 @@ default: &default
       icon_size: 22
       icon_location_size: 35
       icon_arrow_down: 15
+    item:
+      icon_star_size: 15
+      icon_heart_size: 18
+    category:
+      icon_category_size: 22
+      icon_arrow_size: 16
+  category:
+    phone_id: 1
+    laptop_id: 7
+    audio_id: 12
 development:
   <<: *default

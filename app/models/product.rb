@@ -8,4 +8,13 @@ class Product < ApplicationRecord
   has_many :cart_items, dependent: :destroy
   has_many :product_categories, dependent: :destroy
   has_many_attached :images
+
+  has_many :categories, through: :product_categories, source: :category
+  scope :product_by_subcategories, lambda {|category_path|
+                               joins(:categories)
+                                 .where(categories: {path: Category
+                                 .sub_categories_of(category_path)
+                                 .select(:path)})
+                                 .distinct
+                             }
 end

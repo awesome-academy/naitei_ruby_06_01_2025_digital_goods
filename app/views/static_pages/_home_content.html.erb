@@ -1,0 +1,34 @@
+<div class="home-content-section">
+  <div class="product-list-group" id="telephone">
+    <div class="product-list-group__title">
+      <span><%= t("view.home.featured_phone") %></span>
+    </div>
+    <div class="product-list-group__container">
+      <div class="grid-list product-telephone-list">
+        <%= render partial: "shared/product_card", collection: @phone_products, as: :product %>
+      </div>
+    </div>
+  </div>
+
+  <div class="product-list-group" id="telephone">
+    <div class="product-list-group__title">
+      <span><%= t("view.home.laptop") %></span>
+    </div>
+    <div class="product-list-group__container">
+      <div class="grid-list product-telephone-list">
+        <%= render partial: "shared/product_card", collection: @laptop_products, as: :product %>
+      </div>
+    </div>
+  </div>
+
+  <div class="product-list-group" id="telephone">
+    <div class="product-list-group__title">
+      <span><%= t("view.home.audio") %></span>
+    </div>
+    <div class="product-list-group__container">
+      <div class="grid-list product-telephone-list">
+        <%= render partial: "shared/product_card", collection: @audio_products, as: :product %>
+      </div>
+    </div>
+  </div>
+</div>

@@ -4,4 +4,10 @@ namespace :import do
     require_relative "../import_provinces"
     ImportProvinces.call
   end
+
+  desc "Import categories level-1-2 into the database"
+  task categories: :environment do
+    require_relative "../import_categories"
+    ImportCategories.call
+  end
 end

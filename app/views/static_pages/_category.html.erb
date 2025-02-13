@@ -1,0 +1,35 @@
+<div class="category-section">
+  <div class="category-section__sidebar">
+    <div class="menu-tree"> 
+      <% menu_items.each do |item| %>
+        <%= render "shared/menu_item", item %>
+      <% end %>
+    </div>
+  </div>
+  <div class="category-section__banner">
+    <%= link_to "#", class: "banner-nav" do %>
+      <div class="banner-item">
+        <%= image_tag "banner.png", alt: "Mini Banner 1" %>
+      </div>
+    <% end %>
+  </div>
+  <div class="category-section__minibanner">
+    <%= link_to "#", class: "mini-banner-nav" do %>
+      <div class="banner-item">
+        <%= image_tag "minibanner1.png", alt: "Mini Banner 1" %>
+      </div>
+    <% end %>
+
+    <%= link_to "#", class: "mini-banner-nav" do %>
+      <div class="banner-item">
+        <%= image_tag "minibanner2.png", alt: "Mini Banner 1" %>
+      </div>
+    <% end %>
+
+    <%= link_to "#", class: "mini-banner-nav" do %>
+      <div class="banner-item">
+        <%= image_tag "minibanner3.png", alt: "Mini Banner 1" %>
+      </div>
+    <% end %>
+  </div>
+</div>
