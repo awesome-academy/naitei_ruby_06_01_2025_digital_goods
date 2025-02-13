@@ -1,0 +1,9 @@
+<div class="label-menu-tree">
+  <%= link_to link, class: "nav-link" do %>
+    <div class="label-menu-tree__left">
+      <%= bootstrap_icon(icon, class: "icon-left", height: Settings.default.view.category.icon_category_size) %>
+      <span><%= label %></span>
+    </div>
+    <%= bootstrap_icon "chevron-right", height: Settings.default.view.category.icon_arrow_size, class:"icon-search"  %>
+  <% end %>
+</div>

@@ -3,6 +3,7 @@ vi:
     default: "DigiHub"
     sign_up: "Đăng ký"
     sign_in: "Đăng nhập"
+    home: "Trang chủ"
   view:
     header: 
       category: "Danh mục"
@@ -22,6 +23,24 @@ vi:
       sign_in: "Đăng nhập"
       you_have_an_account: "Bạn đã có tài khoản?"
       login_now: "Đăng nhập ngay"
+    home:
+      product_notice: "Không phí chuyển đổi khi trả góp 0% qua thẻ tín dụng kỳ hạn 3-6 tháng"
+      featured_phone: "Điện thoại nổi bật"
+      laptop: "Máy tính"
+      audio: "Âm thanh"
+      smartwatch: "Đồng hồ thông minh"
+      home_appliance: "Đồ gia dụng"
+      monitor: "Màn hình"
+      tv: "Tivi"
+      camera: "Camera"
+      accessory: "Phụ kiện"
+      computer_component: "Linh kiện máy tính"
+      printer: "Máy in"
+      discount: "Giảm giá"
+      installment: "Trả góp"
+      promotion: "Khuyến mãi"
+      tech_news: "Tin công nghệ"
+      like: "Yêu thích"
   form:
     label:
       user:

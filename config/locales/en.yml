@@ -3,6 +3,7 @@ en:
     default: "DigiHub"
     sign_up: "Sign Up"
     sign_in: "Sign In"
+    home: "Home"
   view:
     header: 
       category: "Category"
@@ -22,6 +23,24 @@ en:
       sign_in: "Sign In"
       you_have_an_account: "Already have an account?"
       login_now: "Login now"
+    home:
+      product_notice: "No conversion fee for 0% installment payment via credit card (3-6 months)"
+      featured_phone: "Featured Phone"
+      laptop: "Laptop"
+      audio: "Audio"
+      smartwatch: "Smartwatch"
+      home_appliance: "Home Appliance"
+      monitor: "Monitor"
+      tv: "TV"
+      camera: "Camera"
+      accessory: "Accessory"
+      computer_component: "Computer Component"
+      printer: "Printer"
+      discount: "Discount"
+      installment: "Installment"
+      promotion: "Promotion"
+      tech_news: "Tech News"
+      like: "Like"
   form:
     label:
       user:
@@ -38,7 +57,7 @@ en:
       telephone: "Enter your phone number"
       email: "Enter your email"
       password: "Enter your password"
-      password_confirmation: "Re-enter your password"
+      password_confirmation: "Re_enter your password"
   messages:
     email_notice: "VAT invoices for purchases will be sent to this email."
     password_notice: "(*) Password must be at least 8 characters long"

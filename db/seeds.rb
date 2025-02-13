@@ -31,16 +31,21 @@ users = []
     user_name: Faker::Internet.unique.username,
     full_name: Faker::Name.name,
     email: Faker::Internet.unique.email,
-    telephone: Faker::PhoneNumber.phone_number,
-    password_digest: 'password',
+    telephone: "0987654321",
+    password: 'password',
+    password_confirmation: 'password',
     admin: false,
-    status: ['active', 'inactive', 'banned'].sample
+    status: ['active', 'in_active', 'banned'].sample
   )
 end
 
 provinces = 5.times.map { Province.create!(name: Faker::Address.state) }
 districts = provinces.flat_map { |p| 3.times.map { District.create!(name: Faker::Address.city, province: p) } }
 wards = districts.flat_map { |d| 3.times.map { Ward.create!(name: Faker::Address.community, district: d) } }
+
+provinces = Province.all
+districts = District.all
+wards = Ward.all
 
 users.each do |user|
   UserAddress.create!(
