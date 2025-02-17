@@ -4,13 +4,14 @@
 
 body {
     font-family: 'Roboto', sans-serif;
+    overflow: hidden;
 }
 
 .container {
     width: 100vw;
     height: 100vh;
     padding: 0;
-    overflow-x: hidden;
+    overflow-x: hidden !important;
     overflow-y: hidden;
 }
 

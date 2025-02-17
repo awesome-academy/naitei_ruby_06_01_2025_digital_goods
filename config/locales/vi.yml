@@ -41,6 +41,31 @@ vi:
       promotion: "Khuyến mãi"
       tech_news: "Tin công nghệ"
       like: "Yêu thích"
+    product_detail:
+      product_not_found: "Sản phẩm không tồn tại"
+      select_color: "Chọn màu để xem giá và chi nhánh có hàng"
+      buy_now: "Mua ngay"
+      buy_now_upcase: "MUA NGAY"
+      add_to_cart: "Thêm vào giỏ"
+      installment: "TRẢ GÓP"
+      prepayment_from: "Trả trước chỉ từ"
+      additional_offers: "ƯU ĐÃI THÊM"
+      specifications: "Thông số kỹ thuật"
+      product_info: "Thông tin sản phẩm"
+      similar_products: "Sản phẩm tương tự"
+      product_cart:
+        list_price: "Giá niêm yết"
+        discount_price: "Giá ưu đãi"
+      benefits:
+        smember_offer: "Xem chính sách ưu đãi dành cho thành viên Smember"
+        hsbc_cashback: "Hoàn tiền đến 2 triệu khi mở thẻ tín dụng HSBC"
+        vnpay_discount: "Giảm đến 500.000đ khi thanh toán qua VNPAY"
+        acb_credit_discount: "Giảm đến 500.000đ khi thanh toán bằng thẻ tín dụng ACB"
+        home_credit_discount: "Giảm đến 400.000đ khi thanh toán bằng thẻ tín dụng Home Credit"
+        kredivo_discount: "Giảm đến 500.000đ khi thanh toán qua Kredivo"
+        momo_discount: "Giảm đến 200.000đ khi thanh toán qua MOMO"
+        shopeepay_discount: "Giảm đến 20.000đ khi thanh toán qua ShopeePay"
+        b2b_contact: "Liên hệ B2B để được tư vấn giá tốt nhất cho khách hàng doanh nghiệp khi mua số lượng nhiều"
   form:
     label:
       user:

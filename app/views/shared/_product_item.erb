@@ -1,0 +1,19 @@
+<div class="product-card">
+  <div class="product-card__image">
+    <%= image_tag "product_image.png", class: "product-image" %>
+  </div>
+  <div class="product-card__title">
+    <span>
+      <%= product[:product_title] %>
+    </span>
+  </div>
+  <div class="product-card__original-price">
+    <span><%= t("view.product_detail.product_cart.list_price") %> <%= product_price(product[:price]) %> đ</span>
+  </div>
+  <div class="product-card__sale-price">
+    <span><%= t("view.product_detail.product_cart.discount_price") %> <%= discounted_price(product[:price].to_i, product[:discount]) %> đ</span>
+  </div>
+  <button class="product-card__button">
+    <%= t("view.product_detail.buy_now") %>
+  </button>
+</div>

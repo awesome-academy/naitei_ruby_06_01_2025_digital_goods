@@ -41,6 +41,31 @@ en:
       promotion: "Promotion"
       tech_news: "Tech News"
       like: "Like"
+    product_detail:
+      product_not_found: "Product does not exist"
+      select_color: "Select a color to see price and available branches"
+      buy_now: "Buy Now"
+      installment: "INSTALLMENT"
+      buy_now_upcase: "BUY NOW"
+      add_to_cart: "Add to cart"
+      prepayment_from: "Prepayment from"
+      additional_offers: "ADDITIONAL OFFERS"
+      specifications: "Specifications"
+      product_info: "Product Information"
+      similar_products: "Similar Products"
+      product_cart:
+        list_price: "Listed Price:"
+        discount_price: "Discount Price:"
+      benefits:
+        smember_offer: "View exclusive offers for Smember members"
+        hsbc_cashback: "Get up to 2 million VND cashback when opening an HSBC credit card"
+        vnpay_discount: "Get up to 500,000 VND discount when paying via VNPAY"
+        acb_credit_discount: "Get up to 500,000 VND discount when paying with an ACB credit card"
+        home_credit_discount: "Get up to 400,000 VND discount when paying with a Home Credit credit card"
+        kredivo_discount: "Get up to 500,000 VND discount when paying via Kredivo"
+        momo_discount: "Get up to 200,000 VND discount when paying via MOMO"
+        shopeepay_discount: "Get up to 20,000 VND discount when paying via ShopeePay"
+        b2b_contact: "Contact B2B for the best business pricing when purchasing in bulk"
   form:
     label:
       user:
