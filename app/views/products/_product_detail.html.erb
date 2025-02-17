@@ -1,0 +1,8 @@
+<% details.each do |detail| %>
+  <div class="product-detail-infor__item">
+    <div class="description">
+      <%= bootstrap_icon detail[:icon], height: Settings.default.view.product_detail.icon_size, class: "head-icon" %>
+      <span><%= detail[:text] %></span>
+    </div>
+  </div>
+<% end %>

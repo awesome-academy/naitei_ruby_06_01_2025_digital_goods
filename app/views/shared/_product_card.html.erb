@@ -1,7 +1,12 @@
-<div class="product-card grid-list__item">
+<%= link_to product, class:"product-card grid-list__item" do %>
   <div class="product-labels">
-    <span class="discount-label"><%= t("view.home.discount") %><%= product[:discount] %> %</span>
-    <span class="payment-label"><%= t("view.home.installment") %> 0%</span>
+    <span class="discount-label">
+      <%= t("view.home.discount") %>
+        <%= product[:discount] %> %
+    </span>
+    <span class="payment-label">
+      <%= t("view.home.installment") %> 0%
+    </span>
   </div>
 
   <div class="product-image-container">
@@ -9,27 +14,35 @@
   </div>
 
   <div class="product-info">
-    <h3 class="product-title"><%= product[:product_title] %></h3>
+    <h3 class="product-title">
+      <%= product[:product_title] %>
+    </h3>
 
     <div class="product-price">
-      <span class="current-price"><%= discounted_price(product[:price].to_i, product[:discount]) %> đ</span>
-      <span class="original-price"><%= product_price(product[:price]) %> đ</span>
+      <span class="current-price">
+        <%= discounted_price(product[:price].to_i, product[:discount]) %> đ
+      </span>
+      <span class="original-price">
+        <%= product_price(product[:price]) %> đ
+      </span>
     </div>
 
     <p class="product-notice">
-      <%= t("view.home.product_notice") %>
+      <%= t("view.home.product_notice")%>
     </p>
 
     <div class="product-actions">
       <div class="rating">
         <% 5.times do %>
           <%= bootstrap_icon "star", height: Settings.default.view.item.icon_star_size, class:"star-icon" %>
-        <% end %>
+            <% end %>
       </div>
       <button class="favorite-btn">
         <%= bootstrap_icon "heart", height: Settings.default.view.item.icon_heart_size, class:"heart-icon"%>
-        <span><%= t("view.home.like") %></span>
+          <span>
+            <%= t("view.home.like") %>
+          </span>
       </button>
     </div>
   </div>
-</div>
+<% end %>

@@ -24,9 +24,15 @@ default: &default
     category:
       icon_category_size: 22
       icon_arrow_size: 16
+    product_detail:
+      icon_size: 24
+      icon_check: 15
+      star_count: 5
   category:
     phone_id: 1
     laptop_id: 7
     audio_id: 12
+  product:
+    installment: 10
 development:
   <<: *default

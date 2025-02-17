@@ -5,6 +5,8 @@ Rails.application.routes.draw do
     post "/signup", to: "users#create"
     get "/login", to: "sessions#new"
     post "/login", to: "sessions#create"
+    get "/product_detail/:id", to: "products#show"
     resources :users
+    resources :products
   end
 end

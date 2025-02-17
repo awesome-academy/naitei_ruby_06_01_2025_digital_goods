@@ -47,13 +47,14 @@
         -ms-overflow-style: none;
 
         &__item {
+          text-decoration: none;
           height: 100%;
           scroll-snap-align: start;
           flex: 0 0 auto;
           width: calc((100% - 40px) / 5);
 
           @media (max-width: 1200px) {
-            width: calc((100% - 40px) / 4);
+            width: calc((100% - 30px) / 4);
           }
 
           @media (max-width: 940px) {
