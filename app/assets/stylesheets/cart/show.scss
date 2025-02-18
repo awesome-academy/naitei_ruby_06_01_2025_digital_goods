@@ -1,0 +1,256 @@
+@import '../variables';
+.cart-section {
+  min-height: 100vh;
+  width: 100%;
+  overflow-y: auto;
+  overflow-x: hidden;
+  background: $background-color;
+
+  &__container {
+    width: 100%;
+    margin-top: 64px;
+    display: flex;
+    justify-content: center;
+
+    .cart-content {
+      padding: 15px;
+      color: $placeholder-color;
+      margin: auto;
+      width: 600px;
+      position: relative;
+
+      &__header {
+        padding: 10px;
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+        justify-content: start;
+        border-bottom: 1px solid $border-color-gray-3;
+
+        &-title {
+          font-size: 18px;
+          font-weight: 500;
+          margin-left: 50%;
+          text-align: center;
+          transform: translate(-50%, 0);
+          white-space: nowrap;
+          width: -moz-fit-content;
+          width: fit-content;
+        }
+      }
+
+      &__btn {
+        margin-top: 15px;
+        background-color: $primary-color;
+        width: 96px;
+        color: $white-color;
+        font-size: 16px;
+        font-weight: 500;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        border: 1px solid $border-color-gray-4;
+        border-radius: 8px;
+        padding: 8px 15px;
+        transition: .3s;
+        white-space: nowrap;
+      }
+
+      &__products {
+        display: flex;
+        width: 100%;
+        flex-direction: column;
+        justify-content: start;
+        align-items: start;
+        margin-top: 20px;
+
+        .product-item-outer {
+          width: 100%;
+          display: flex;
+          align-items: center;
+          background-color: $white-color;
+          border: 1px solid $border-color-gray-4;
+          border-radius: 8px;
+          margin-bottom: 20px;
+          padding: 10px;
+          position: relative;
+
+          .product-item {
+            width: 100%;
+            align-items: flex-start;
+            display: flex;
+            flex-direction: row;
+            justify-content: space-between;
+            min-height: 110px;
+            padding: 10px 0;
+
+            .custom-checkbox {
+              align-items: center;
+              position: relative;
+              width: 25%;
+              height: 100%;
+              display: flex;
+              flex-direction: row;
+              justify-content: start;
+              align-items: start;
+              gap: 10px;
+
+              .product-checkbox {
+                width: 16px;
+                height: 16px;
+                cursor: pointer;
+              }
+
+              .product-image {
+                height: 100px;
+                width: 100px;
+
+                img {
+                  width: 100%;
+                  height: 100%;
+                  object-fit: cover;
+                }
+              }
+            }
+
+            .product-content {
+              width: 75%;
+              height: 100%;
+              display: flex;
+              flex-direction: column;
+              justify-content: center;
+              gap: 8px;
+              align-items: start;
+
+              &__title {
+                width: 100%;
+                display: flex;
+                justify-content: space-between;
+                align-items: center;
+
+                span {
+                  width: 70%;
+                  color: $placeholder-color;
+                  font-size: 15px;
+                }
+
+                button {
+                  cursor: pointer;
+                  background: $white-color;
+                  border: none;
+                }
+              }
+
+              &__price {
+                width: 100%;
+                display: flex;
+                justify-content: space-between;
+                align-items: center;
+
+                .product-price {
+                  display: flex;
+                  gap: 0.5rem;
+                  align-items: center;
+
+                  .current-price {
+                    color: $primary-color;
+                    font-weight: 500;
+                    font-size: 16px;
+                  }
+
+                  .original-price {
+                    color: $gray-color-2;
+                    text-decoration: line-through;
+                    font-size: 14px;
+                    font-weight: 500;
+                  }
+                }
+
+                .quantity-control {
+                  display: flex;
+                  flex-direction: row;
+                  justify-content: center;
+                  align-items: center;
+
+                  button {
+                    background: $white-color;
+                    border: none;
+                  }
+
+                  .quantity-btn {
+                    width: 30px;
+                    height: 30px;
+                    border: 1px solid $gray-light-color-3;
+                    background-color: $white-color-3;
+                    cursor: pointer;
+                    display: flex;
+                    align-items: center;
+                    justify-content: center;
+                    border-radius: 4px;
+                  }
+
+                  .quantity-input {
+                    width: 40px;
+                    height: 30px;
+                    text-align: center;
+                    border: 1px solid $gray-light-color-3;
+                    margin: 0 4px;
+
+                    &::-webkit-inner-spin-button,
+                    &::-webkit-outer-spin-button {
+                      -webkit-appearance: none;
+                      margin: 0;
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+
+      &__bottom-bar {
+        align-items: center;
+        background-color: $white-color;
+        border: 1px solid $border-color-gray-4;
+        border-top-left-radius: 10px;
+        border-top-right-radius: 10px;
+        bottom: 10px;
+        box-shadow: 0 -4px 20px -1px $box-shadow-color-4;
+        display: flex;
+        justify-content: space-between;
+        left: 50%;
+        margin: auto;
+        max-width: 600px;
+        padding: 10px 10px 15px;
+        position: fixed;
+        transform: translateX(-50%);
+        width: 100%;
+        z-index: 11;
+
+        .title-group-left__title {
+          span {
+            font-size: 16px;
+            color: $placeholder-color;
+          }
+
+          .total-price {
+            color: $primary-color;
+          }
+        }
+
+        .btn-group-right {
+          button {
+            background-color: $primary-color;
+            border: 0;
+            border-radius: 5px;
+            color: $white-color;
+            cursor: pointer;
+            height: 40px;
+            padding: 5px 20px;
+          }
+        }
+      }
+    }
+  }
+}

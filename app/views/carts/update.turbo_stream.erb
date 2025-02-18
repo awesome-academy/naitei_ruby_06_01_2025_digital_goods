@@ -1,0 +1,16 @@
+<turbo-stream action="replace" target="quantity-<%= params[:product_id] %>">
+  <template>
+    <input id="quantity-<%= params[:product_id] %>" type="number" value="<%= @cart_item.quantity %>" min="1" class="quantity-input" readonly>
+  </template>
+</turbo-stream>
+
+<turbo-stream action="update" target="product-checkbox-<%= params[:product_id] %>" data-action="element">
+  <template>
+    <script>
+      document.querySelector('#product-checkbox-<%= params[:product_id] %>').setAttribute('data-quantity', '<%= @cart_item.quantity %>');
+      if (window.updateTotal) {
+        window.updateTotal(); 
+      }
+    </script>
+  </template>
+</turbo-stream>

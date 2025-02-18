@@ -6,7 +6,13 @@ Rails.application.routes.draw do
     get "/login", to: "sessions#new"
     post "/login", to: "sessions#create"
     get "/product_detail/:id", to: "products#show"
-    resources :users
+    resources :users do
+      member do
+        get :cart, to: "carts#show"
+        patch :cart, to: "carts#update"
+        delete :cart, to: "carts#destroy"
+      end
+    end
     resources :products
   end
 end

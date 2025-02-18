@@ -4,6 +4,7 @@ en:
     sign_up: "Sign Up"
     sign_in: "Sign In"
     home: "Home"
+    cart: "Cart"
   view:
     header: 
       category: "Category"
@@ -18,6 +19,8 @@ en:
       forgot_password: "Forgot Password"
       remember_me: "Remember me"
       register: "Register"
+      error_message: "Invalid email/password combination"
+      success_message: "Login successfully!"
     sign_up:
       title: "Sign Up"
       sign_in: "Sign In"
@@ -66,6 +69,11 @@ en:
         momo_discount: "Get up to 200,000 VND discount when paying via MOMO"
         shopeepay_discount: "Get up to 20,000 VND discount when paying via ShopeePay"
         b2b_contact: "Contact B2B for the best business pricing when purchasing in bulk"
+    cart:
+      your_cart: "Your Cart"
+      cart: "Cart"
+      buy_now: "Buy Now"
+      subtotal: "Subtotal"
   form:
     label:
       user:
@@ -110,3 +118,9 @@ en:
     sign_up:
       success: "Sign up successfully"
       fail: "Sign up failed"
+    please_log_in: "Please log in"
+    user:
+      not_found: "User not found!"
+      cannot_access: "User cannot access!"
+    cart:
+      stock_exceeded: "The quantity exceeds the available stock!"

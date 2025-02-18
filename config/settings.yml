@@ -28,6 +28,9 @@ default: &default
       icon_size: 24
       icon_check: 15
       star_count: 5
+    cart:
+      arrow_icon_size: 25
+      trash_icon_size: 20
   category:
     phone_id: 1
     laptop_id: 7

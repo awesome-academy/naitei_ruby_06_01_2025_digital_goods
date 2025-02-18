@@ -62,6 +62,19 @@
           </div>
         <% end %>
       </div>
+
+      <div class="header__profile">
+        <%= link_to (logged_in? ? "#" : login_path), class:"profile-group" do %>
+          <%= bootstrap_icon "person-circle", height: Settings.default.view.header.icon_size %>
+          <div class="title-group">
+            <% if logged_in? %>
+              <span><%= current_user.user_name %></span>
+            <% else %>
+              <span><%= t("title.sign_in") %></span>
+            <% end %>
+          </div>
+        <% end %>
+      </div>
     </div>
   </div>
 </div>
