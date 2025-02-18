@@ -1,0 +1,36 @@
+<% provide(:title, t("title.cart")) %>
+<div class="cart-section">
+  <div class="cart-section__container">
+    <div class="cart-content">
+      <div class="cart-content__header">
+        <%= bootstrap_icon "chevron-left", height: Settings.default.view.cart.arrow_icon_size, class:"cart-content__header-icon" %>
+        <span class="cart-content__header-title">
+          <%= t("view.cart.your_cart") %>
+        </span>
+      </div>
+
+      <div class="cart-content__btn">
+        <span class="btn-title"><%= t("view.cart.cart") %></span>
+      </div>
+
+      <div class="cart-content__products">
+        <% @cart_products.each do |cart_product| %>
+          <%= render partial: "cart_item", locals: { product: cart_product.product, quantity: cart_product.quantity } %>
+        <% end %>
+      </div>
+
+      <div class="cart-content__bottom-bar">
+        <div class="title-group-left">
+          <div class="title-group-left__title">
+            <span><%= t("view.cart.subtotal") %></span>
+            <span class="total-price" id="total-price">0</span>
+          </div>
+        </div>
+
+        <div class="btn-group-right">
+          <button class="btn-group-right__btn"><%= t("view.cart.buy_now") %></button>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

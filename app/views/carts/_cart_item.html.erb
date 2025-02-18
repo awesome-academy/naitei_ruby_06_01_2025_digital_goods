@@ -1,0 +1,41 @@
+<div class="product-item-outer" id="cart-item-<%= product[:id] %>">
+  <div class="product-item">
+    <div class="custom-checkbox">
+      <input type="checkbox" class="product-checkbox" id="product-checkbox-<%= product[:id] %>"
+                 data-price="<%= current_price(product[:price].to_i, product[:discount]) %>"
+                 data-quantity="<%= quantity %>"/>
+      <div class="product-image">
+        <%= image_tag "product_image.png", class: "product-image" %>
+      </div>
+    </div>
+
+    <div class="product-content">
+      <div class="product-content__title">
+        <span class="product-title"><%= product[:product_title] %></span>
+        <%= button_to cart_user_path(current_user, product_id: product[:id]), method: :delete, remote: true, form: { class: "delete-form" } do %>
+          <%= bootstrap_icon "trash", height: Settings.default.view.cart.trash_icon_size, class: "delete-btn" %>
+        <% end %>
+      </div>
+      <div class="product-content__price">
+        <div class="product-price">
+          <span class="current-price"><%= discounted_price(product[:price].to_i, product[:discount]) %> đ</span>
+          <span class="original-price"><%= product_price(product[:price]) %> đ</span>
+        </div>
+
+        <div class="quantity-control">
+          <%= button_to cart_user_path(current_user, product_id: product[:id], operation: "decrease"),
+                        method: :patch, remote: true, form: { class: "quantity-form" } do %>
+            <button class="quantity-btn decrease">-</button>
+          <% end %>
+
+          <input id="quantity-<%= product[:id] %>" type="number" value="<%= quantity %>" min="1" class="quantity-input" readonly>
+
+          <%= button_to cart_user_path(current_user, product_id: product[:id], operation: "increase"),
+                        method: :patch, remote: true, form: { class: "quantity-form" } do %>
+            <button class="quantity-btn increase">+</button>
+          <% end %>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

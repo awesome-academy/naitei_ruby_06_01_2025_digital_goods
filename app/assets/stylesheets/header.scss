@@ -191,6 +191,24 @@
         }
       }
     }
+
+    .header__profile {
+      .profile-group {
+        align-items: center;
+        background-color: $gray-light-color-5;
+        border-radius: 10px;
+        cursor: pointer;
+        display: flex;
+        flex-direction: column;
+        gap: 1px;
+        justify-content: center;
+        min-width: 70px;
+        height: 80%;
+        padding: 3px;
+        position: relative;
+        transition: all .2slinear;
+      }
+    }
   }
 }
 
