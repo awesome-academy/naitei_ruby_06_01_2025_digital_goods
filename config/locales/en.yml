@@ -5,6 +5,7 @@ en:
     sign_in: "Sign In"
     home: "Home"
     cart: "Cart"
+    order: "Order"
   view:
     header: 
       category: "Category"
@@ -74,6 +75,33 @@ en:
       cart: "Cart"
       buy_now: "Buy Now"
       subtotal: "Subtotal"
+    order:
+      info: "Information"
+      pay: "Pay"
+      email: "EMAIL"
+      customer_info: "Customer Information" 
+      shipping_info: "Shipping Information"
+      payment_method: "Payment Method"
+      payment_details: "Payment Details"
+      vat_invoice_notice: "(*) VAT invoice will be sent to this email"
+      email_promotion: "Receive notifications and promotions from DigiHub"
+      recipient_name: "Recipient Name"
+      recipient_phone: "Recipient Phone Number"
+      province_city: "Province/City"
+      district: "District"
+      ward_commune: "Ward/Commune"
+      house_street: "House Number, Street Name"
+      address: "Address"
+      product_quantity: "Product Quantity"
+      subtotal: "Subtotal"
+      shipping_fee: "Shipping Fee"
+      total_amount: "Total Amount"
+      vat_included: "(VAT included)"
+      cash_on_delivery: "Cash on Delivery"
+      change: "Change"
+      success: "Order placed successfully"
+      place_order: "Place Order"
+      quantity: "Quantity: "
   form:
     label:
       user:
@@ -124,3 +152,8 @@ en:
       cannot_access: "User cannot access!"
     cart:
       stock_exceeded: "The quantity exceeds the available stock!"
+      select_at_least_one_product: "Please select at least one product before purchasing."
+    order:
+      created_successfully: "Order has been created successfully!"
+      creation_failed: "An error occurred while creating the order!"
+      please_select_product: "Please select a product"

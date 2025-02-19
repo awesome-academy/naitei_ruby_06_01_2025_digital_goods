@@ -1,0 +1,64 @@
+@import '../variables';
+
+.order-content__bottom-bar {
+  align-items: center;
+  background-color: $white-color;
+  border-top-left-radius: 10px;
+  border-top-right-radius: 10px;
+  bottom: 10px;
+  box-shadow: 0 -4px 20px -1px $box-shadow-color-4;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  left: 50%;
+  margin: auto;
+  max-width: 600px;
+  padding: 10px 10px 15px;
+  position: fixed;
+  transform: translateX(-51%);
+  width: 100%;
+  z-index: 11;
+  gap: 10px;
+
+  .bottom-bar__head {
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+
+    &-title {
+      font-size: 16px;
+      font-weight: 500;
+    }
+
+    &-price {
+      color: $primary-color;
+      font-size: 16px;
+      font-weight: 500;
+    }
+  }
+
+  form {
+    width: 100%;
+    background: $white-color;
+
+    button {
+      padding: 0;
+      width: 100% !important;
+      border: none;
+    }
+  }
+
+  .bottom-bar__btn {
+    width: 100%;
+    background-color: $primary-color;
+    font-weight: 500;
+    padding: 8px 0;
+    border-radius: 5px;
+    text-align: center;
+    font-size: 16px;
+    color: $white-color;
+    cursor: pointer;
+  }
+}

@@ -15,7 +15,7 @@
 
       <div class="cart-content__products">
         <% @cart_products.each do |cart_product| %>
-          <%= render partial: "cart_item", locals: { product: cart_product.product, quantity: cart_product.quantity } %>
+          <%= render partial: "cart_item", locals: { product: cart_product.product, cart_item: cart_product } %>
         <% end %>
       </div>
 
@@ -28,7 +28,10 @@
         </div>
 
         <div class="btn-group-right">
-          <button class="btn-group-right__btn"><%= t("view.cart.buy_now") %></button>
+          <%= form_with url: cart_checked_user_path(current_user), method: :patch, id: "submit-checked-form" do %>
+            <input type="hidden" name="checked_cart_items" id="checked-cart-items">
+            <button type="submit" class="btn-group-right__btn"><%= t("view.cart.buy_now") %></button>
+          <% end %>
         </div>
       </div>
     </div>

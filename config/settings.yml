@@ -37,5 +37,13 @@ default: &default
     audio_id: 12
   product:
     installment: 10
+  order:
+    delivery_fee: 15000
+    order_status:
+      canceled: 0
+      pending: 1
+      picking: 2
+      shipping: 3
+      delivered: 4
 development:
   <<: *default

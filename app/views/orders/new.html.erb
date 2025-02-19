@@ -1,0 +1,150 @@
+<% provide(:title, t("title.order")) %>
+<div class="order-section">
+  <div class="order-section__container">
+    <div class="order-content">
+      <div class="order-content__header">
+        <%= bootstrap_icon "chevron-left" , height: Settings.default.view.cart.arrow_icon_size,
+          class:"order-content__header-icon" %>
+          <span class="order-content__header-title">
+            <%= t("view.order.info") %>
+          </span>
+      </div>
+
+      <div class="order-content__products">
+        <% @cart_items.each do |cart_product| %>
+          <%= render partial: "order_item", locals: { product: cart_product.product, quantity: cart_product.quantity } %>
+        <% end %>
+      </div>
+
+      <div class="order-content__customer-info custom-info">
+        <div class="custom-info__title">
+          <span><%= t("view.order.customer_info") %></span>
+        </div>
+        <div class="custom-info__content">
+          <div class="custom-info__content-head">
+            <div class="name-info-group">
+              <span class="name"><%= current_user[:full_name] %></span>
+              <span class="number-phone"><%= current_user[:telephone] %></span>
+            </div>
+            <div class="email-info-group">
+              <span class="title"><%= t("view.order.email") %></span>
+              <span class="email"><%= current_user[:email] %></span>
+            </div>
+          </div>
+          <br>
+          <span class="vat-text"><%= t("view.order.vat_invoice_notice") %></span>
+          <div class="checkbox-email">
+            <input type="checkbox" name="email-register" id="email-register">
+            <span><%= t("view.order.email_promotion") %></span>
+          </div>
+        </div>
+      </div>
+
+      <div class="order-content__address">
+        <div class="address-title">
+          <span><%= t("view.order.shipping_info") %></span>
+        </div>
+        <div class="address-content">
+          <div class="address-content__items-group">
+            <div class="address-item-group">
+              <span class="address-item-group__label"><%= t("view.order.recipient_name") %></span>
+              <span class="address-item-group__value"><%= current_user[:full_name] %></span>
+            </div>
+
+            <div class="address-item-group">
+              <span class="address-item-group__label"><%= t("view.order.recipient_phone") %></span>
+              <span class="address-item-group__value"><%= current_user[:telephone] %></span>
+            </div>
+          </div>
+
+          <div class="address-content__items-group">
+            <div class="address-item-group">
+              <span class="address-item-group__label"><%= t("view.order.province_city") %></span>
+              <span class="address-item-group__value"><%= @delivery_address.province[:name] %></span>
+            </div>
+
+            <div class="address-item-group">
+              <span class="address-item-group__label"><%= t("view.order.district") %></span>
+              <span class="address-item-group__value"><%= @delivery_address.district[:name] %></span>
+            </div>
+          </div>
+
+          <div class="address-content__items-group">
+            <div class="address-item-group">
+              <span class="address-item-group__label"><%= t("view.order.ward_commune") %></span>
+              <span class="address-item-group__value"><%= @delivery_address.ward[:name] %></span>
+            </div>
+
+            <div class="address-item-group">
+              <span class="address-item-group__label"><%= t("view.order.house_street") %></span>
+              <span class="address-item-group__value"><%= @delivery_address[:location] %></span>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="order-content__payment">
+        <div class="order-content__payment-title">
+          <%= t("view.order.payment_method") %>
+        </div>
+
+        <div class="payment-method">
+          <div class="payment-method__header">
+            <div class="payment-method__icon">
+              <%= image_tag "ship_logo.png", alt: "COD Icon", class: "payment-method__icon-img" %>
+            </div>
+            <div class="payment-method__text">
+              <span class="payment-method__title"><%= t("view.order.cash_on_delivery") %></span>
+            </div>
+            <div class="payment-method__action">
+              <%= link_to t("view.order.change"), "#", class: "payment-method__change" %>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="order-content__price">
+        <div class="order-content__price-title">
+          <%= t("view.order.payment_details") %>
+        </div>
+
+        <div class="price-summary">
+          <div class="price-summary__row">
+            <span class="price-summary__label"><%= t("view.order.product_quantity") %></span>
+            <span class="price-summary__value"><%= total_quantity(@cart_items) %></span>
+          </div>
+        
+          <div class="price-summary__row">
+            <span class="price-summary__label"><%= t("view.order.subtotal") %></span>
+            <span class="price-summary__value"><%= product_price @products_price %>đ</span>
+          </div>
+        
+          <div class="price-summary__row">
+            <span class="price-summary__label"><%= t("view.order.shipping_fee") %></span>
+            <span class="price-summary__value"><%= product_price Settings.default.order.delivery_fee %>đ</span>
+          </div>
+        
+          <div class="price-summary__row price-summary__row--total">
+            <div class="price-summary__label">
+              <span class="price-summary__price"><%= t("view.order.total_amount") %></span>
+              <span class="price-summary__vat"><%= t("view.order.vat_included") %></span>
+            </div>
+            <span class="price-summary__value price-summary__total"><%= product_price @total_amount %>đ</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="order-content__bottom-bar">
+        <div class="bottom-bar__head">
+          <span class="bottom-bar__head-title"><%= t("view.order.total_amount") %></span>
+          <span class="bottom-bar__head-price"><%= product_price @total_amount %>đ</span>
+        </div>
+        <%= button_to orders_path, method: :post do %>
+          <div class="bottom-bar__btn">
+            <%= t("view.order.place_order") %>
+          </div>
+        <% end %>
+      </div>
+    </div>
+  </div>
+</div>

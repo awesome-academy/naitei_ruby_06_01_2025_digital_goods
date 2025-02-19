@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2025_02_17_035617) do
+ActiveRecord::Schema[7.0].define(version: 2025_02_19_023850) do
   create_table "active_storage_attachments", charset: "utf8mb4", collation: "utf8mb4_0900_ai_ci", force: :cascade do |t|
     t.string "name", null: false
     t.string "record_type", null: false
@@ -53,6 +53,7 @@ ActiveRecord::Schema[7.0].define(version: 2025_02_17_035617) do
     t.bigint "user_id", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.boolean "checked"
     t.index ["product_id"], name: "index_cart_items_on_product_id"
     t.index ["user_id"], name: "index_cart_items_on_user_id"
   end
@@ -184,6 +185,7 @@ ActiveRecord::Schema[7.0].define(version: 2025_02_17_035617) do
     t.bigint "ward_id", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.boolean "address_default", default: false
     t.index ["district_id"], name: "index_user_addresses_on_district_id"
     t.index ["province_id"], name: "index_user_addresses_on_province_id"
     t.index ["user_id"], name: "index_user_addresses_on_user_id"

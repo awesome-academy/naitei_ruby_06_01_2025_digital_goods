@@ -5,6 +5,7 @@ vi:
     sign_in: "Đăng nhập"
     home: "Trang chủ"
     cart: "Giỏ hàng"
+    order: "Đặt hàng"
   view:
     header: 
       category: "Danh mục"
@@ -74,6 +75,33 @@ vi:
       cart: "Giỏ hàng"
       buy_now: "Mua ngay"
       subtotal: "Tạm tính"
+    order:
+      info: "Thông tin"
+      pay: "Thanh toán"
+      email: "EMAIL"
+      customer_info: "Thông tin khách hàng" 
+      shipping_info: "Thông tin nhận hàng"
+      payment_method: "Phương thức thanh toán"
+      payment_details: "Chi tiết thanh toán"
+      vat_invoice_notice: "(*) Hóa đơn VAT sẽ được gửi qua email này"
+      email_promotion: "Nhận email thông báo và ưu đãi từ DigiHub"
+      recipient_name: "Tên người nhận"
+      recipient_phone: "Số điện thoại người nhận"
+      province_city: "Tỉnh/ Thành phố"
+      district: "Quận/ huyện"
+      ward_commune: "Phường/ xã"
+      house_street: "Số nhà, tên đường"
+      address: "Địa chỉ"
+      product_quantity: "Số lượng sản phẩm"
+      subtotal: "Tiền hàng (tạm tính)"
+      shipping_fee: "Phí vận chuyển"
+      total_amount: "Tổng tiền"
+      vat_included: "(đã gồm VAT)"
+      cash_on_delivery: "Thanh toán khi nhận hàng"
+      change: "Thay đổi"
+      success: "Đặt hàng thành công"
+      place_order: "Đặt hàng"
+      quantity: "Số lượng: "
   form:
     label:
       user:
@@ -123,4 +151,9 @@ vi:
       not_found: "Người dùng không tồn tại!"
       cannot_access: "Người dùng không thể truy cập!"
     cart:
-      stock_exceeded: "The quantity exceeds the available stock!"
+      stock_exceeded: "Số lượng sản phẩm vượt quá số lượng trong kho!"
+      select_at_least_one_product: "Vui lòng chọn ít nhất một sản phẩm trước khi mua."
+    order:
+      created_successfully: "Đơn hàng đã được tạo thành công!"
+      creation_failed: "Đã xảy ra lỗi khi tạo đơn hàng!"
+      please_select_product: "Vui lòng chọn sản phẩm"
