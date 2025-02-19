@@ -84,6 +84,12 @@ class User < ApplicationRecord
     cart_items.includes(:product)
   end
 
+  def default_address
+    user_addresses
+      .includes(:province, :district, :ward)
+      .find_by(address_default: true)
+  end
+
   private
 
   def downcase_email

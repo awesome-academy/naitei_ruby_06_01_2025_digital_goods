@@ -2,8 +2,9 @@
   <div class="product-item">
     <div class="custom-checkbox">
       <input type="checkbox" class="product-checkbox" id="product-checkbox-<%= product[:id] %>"
+                 data-id="<%= cart_item[:id] %>"
                  data-price="<%= current_price(product[:price].to_i, product[:discount]) %>"
-                 data-quantity="<%= quantity %>"/>
+                 data-quantity="<%= cart_item[:quantity] %>"/>
       <div class="product-image">
         <%= image_tag "product_image.png", class: "product-image" %>
       </div>
@@ -28,7 +29,7 @@
             <button class="quantity-btn decrease">-</button>
           <% end %>
 
-          <input id="quantity-<%= product[:id] %>" type="number" value="<%= quantity %>" min="1" class="quantity-input" readonly>
+          <input id="quantity-<%= product[:id] %>" type="number" value="<%= cart_item[:quantity] %>" min="1" class="quantity-input" readonly>
 
           <%= button_to cart_user_path(current_user, product_id: product[:id], operation: "increase"),
                         method: :patch, remote: true, form: { class: "quantity-form" } do %>

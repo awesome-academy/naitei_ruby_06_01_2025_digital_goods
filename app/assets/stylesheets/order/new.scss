@@ -1,0 +1,349 @@
+@import '../variables';
+
+.order-section {
+  height: 100vh;
+  width: 100%;
+  overflow-y: auto;
+  overflow-x: hidden;
+  background: $background-color;
+
+  &__container {
+    width: 100%;
+    margin-top: 64px;
+    display: flex;
+    justify-content: center;
+    overflow-y: auto !important;
+
+    .order-content {
+      padding: 15px 0;
+      color: $placeholder-color;
+      margin: auto;
+      width: 600px;
+      position: relative;
+      padding-bottom: 150px;
+
+      &__header {
+        padding: 10px;
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+        justify-content: start;
+        border-bottom: 1px solid $border-color-gray-3;
+
+        &-title {
+          font-size: 18px;
+          font-weight: 500;
+          margin-left: 50%;
+          text-align: center;
+          transform: translate(-80%, 0);
+          white-space: nowrap;
+          width: -moz-fit-content;
+          width: fit-content;
+        }
+      }
+
+      .order-infor-payment {
+        width: 100%;
+        display: flex;
+        flex-direction: column;
+        align-items: start;
+        justify-content: start;
+      }
+
+      &__products {
+        margin-top: 20px;
+        display: flex;
+        width: 100%;
+        flex-direction: column;
+        justify-content: start;
+        align-items: start;
+        background-color: $white-color;
+        border: 1px solid $border-color-gray-4;
+        border-radius: 10px;
+        padding: 5px 15px 0;
+        width: 100%;
+
+
+        .product-item-outer {
+          width: 100%;
+          display: flex;
+          align-items: center;
+          background-color: $white-color;
+          max-height: 200px;
+          position: relative;
+          border-bottom: 1px solid $border-color-gray-4;
+
+          .product-item {
+            width: 100%;
+            align-items: flex-start;
+            display: flex;
+            flex-direction: row;
+            justify-content: space-between;
+            min-height: 110px;
+            padding: 12px 0;
+            gap: 15px;
+            overflow: hidden;
+            transition: .2sease-in-out;
+
+            .custom-image {
+              align-items: center;
+              position: relative;
+              width: 100px;
+              height: 100px;
+              display: flex;
+              flex-direction: row;
+              justify-content: start;
+              align-items: start;
+              gap: 10px;
+
+              img {
+                width: 100%;
+                height: 100%;
+                object-fit: cover;
+              }
+            }
+
+            .product-content {
+              flex: 1;
+              height: 100%;
+              display: flex;
+              flex-direction: column;
+              justify-content: center;
+              gap: 8px;
+              align-items: start;
+
+              &__title {
+                width: 100%;
+                display: flex;
+                justify-content: space-between;
+                align-items: center;
+
+                span {
+                  width: 80%;
+                  color: $placeholder-color;
+                  font-size: 15px;
+                }
+              }
+
+              &__price {
+                width: 100%;
+                display: flex;
+                justify-content: space-between;
+                align-items: center;
+
+                .product-price {
+                  display: flex;
+                  gap: 0.5rem;
+                  align-items: center;
+
+                  .current-price {
+                    color: $primary-color;
+                    font-weight: 500;
+                    font-size: 16px;
+                  }
+
+                  .original-price {
+                    color: $gray-color-2;
+                    text-decoration: line-through;
+                    font-size: 14px;
+                    font-weight: 500;
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+
+      &__address {
+        margin-top: 30px;
+        position: relative;
+        width: 100%;
+        display: flex;
+        flex-direction: column;
+        justify-content: start;
+        align-items: start;
+
+        .address-title {
+          color: $black-color-2;
+          font-size: 16px;
+          font-weight: 500;
+          line-height: 18px;
+          margin-bottom: 10px;
+          text-transform: uppercase;
+        }
+
+        .address-content {
+          padding: 20px;
+          background-color: $white-color !important;
+          border: 1px solid $border-color-gray-4;
+          border-radius: 10px;
+          width: 100%;
+          display: flex;
+          flex-direction: column;
+          justify-content: start;
+          align-items: start;
+          gap: 5px;
+
+          &__items-group {
+            width: 100%;
+            display: flex;
+            flex-direction: row;
+            justify-content: space-between;
+            align-items: center;
+            gap: 15px;
+
+            .address-item-group {
+              width: 50%;
+              display: flex;
+              flex-direction: column;
+              justify-content: start;
+              align-items: start;
+              border-bottom: 1px solid $border-color-gray-3;
+              padding: 10px 0;
+              gap: 5px;
+
+              &__label {
+                font-size: 12px;
+                color: $gray-light-color-9;
+              }
+            }
+
+            .address-notice {
+              width: 100%;
+            }
+          }
+
+        }
+      }
+
+      &__payment {
+        margin-top: 30px;
+        position: relative;
+        width: 100%;
+        display: flex;
+        flex-direction: column;
+        justify-content: start;
+        align-items: start;
+
+        &-title {
+          color: $black-color-2;
+          font-size: 16px;
+          font-weight: 500;
+          line-height: 18px;
+          margin-bottom: 10px;
+          text-transform: uppercase;
+        }
+
+        .payment-method {
+          width: 100%;
+          background: $white-color;
+          padding: 20px;
+          border: 1px solid $border-color-gray-4;
+          border-radius: 10px;
+        
+          &__header {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+          }
+        
+          &__icon {
+            width: 35px;
+            height: 35px;
+        
+            &-img {
+              width: 100%;
+              height: 100%;
+              object-fit: contain;
+            }
+          }
+        
+          &__text {
+            flex-grow: 1;
+          }
+        
+          &__title {
+            font-size: 15px;
+            color: $black-color;
+          }
+        
+          &__change {
+            color: $primary-color;
+            text-decoration: none;
+            font-size: 15px;
+        
+            &:hover {
+              text-decoration: underline;
+            }
+          }
+        }
+      }
+
+      &__price {
+        margin-top: 30px;
+        position: relative;
+        width: 100%;
+        display: flex;
+        flex-direction: column;
+        justify-content: start;
+        align-items: start;
+
+        &-title {
+          color: $black-color-2;
+          font-size: 16px;
+          font-weight: 500;
+          line-height: 18px;
+          margin-bottom: 10px;
+          text-transform: uppercase;
+        }
+
+        .price-summary {
+          width: 100%;
+          background: $white-color;
+          padding: 20px;
+          border: 1px solid $border-color-gray-4;
+          border-radius: 10px;
+        
+          &__row {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 0.75rem 0;
+        
+            &--total {
+              margin-top: 0.5rem;
+              padding-top: 1.5rem;
+              border-top: 1px solid $border-color-gray-4;
+              font-weight: 500;
+            }
+          }
+        
+          &__label {
+            color: $gray-light-color-2;
+            font-size: 15px;
+          }
+        
+          &__value {
+            color: $black-color;
+            font-size: 15px;
+          }
+        
+          &__vat {
+            color: $gray-light-color-1;
+            font-size: 12px;
+            margin-left: 0.5rem;
+          }
+
+          &__price {
+            color: $black-color;
+          }
+
+          &__total {
+            color: $primary-color;
+          }
+        }
+      }
+    }
+  }
+}

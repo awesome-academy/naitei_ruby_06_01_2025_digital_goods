@@ -1,0 +1,22 @@
+<div class="product-item-outer">
+  <div class="product-item">
+    <div class="custom-image">
+      <%= image_tag "product_image.png", class: "product-image" %>
+    </div>
+
+    <div class="product-content">
+      <div class="product-content__title">
+        <span class="product-title"><%= product[:product_title] %></span>
+      </div>
+      <div class="product-content__price">
+        <div class="product-price">
+          <span class="current-price"><%= discounted_price(product[:price].to_i, product[:discount]) %> đ</span>
+          <span class="original-price"><%= product_price(product[:price]) %> đ</span>
+        </div>
+        <div class="quantity-group">
+          <span><%= t("view.order.quantity") %><%= quantity %></span>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

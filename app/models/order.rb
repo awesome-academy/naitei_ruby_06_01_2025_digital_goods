@@ -4,4 +4,12 @@ class Order < ApplicationRecord
   has_many :order_items, dependent: :destroy
   has_many :order_journeys, dependent: :destroy
   has_many :products, through: :order_items, source: :product
+
+  enum status: {
+    canceled: Settings.default.order.order_status.canceled,
+    pending: Settings.default.order.order_status.pending,
+    picking: Settings.default.order.order_status.picking,
+    shipping: Settings.default.order.order_status.shipping,
+    delivered: Settings.default.order.order_status.delivered
+  }
 end

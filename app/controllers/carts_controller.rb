@@ -1,5 +1,6 @@
 class CartsController < ApplicationController
-  before_action :load_user, :logged_in_user, :correct_user, only: :show
+  before_action :load_user, :logged_in_user, :correct_user,
+                only: %i(show update destroy)
 
   def show
     @cart_products = current_user.cart_products_quantity
@@ -32,6 +33,20 @@ class CartsController < ApplicationController
     @cart_item.destroy
 
     render turbo_stream: turbo_stream.remove("cart-item-#{product_id}")
+  end
+
+  def update_checked
+    checked_cart_items = params[:checked_cart_items]&.split(",")&.map(&:to_i)
+
+    if checked_cart_items.blank?
+      flash[:waring] = t "flash.cart.select_at_least_one_product"
+      redirect_to cart_user_path(current_user) and return
+    end
+
+    CartItem.update_all(checked: false)
+    current_user.cart_items.where(id: checked_cart_items)
+                .update_all(checked: true)
+    redirect_to new_order_path
   end
 
   private
