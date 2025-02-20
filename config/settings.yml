@@ -31,6 +31,12 @@ default: &default
     cart:
       arrow_icon_size: 25
       trash_icon_size: 20
+    order_lookup:
+      status_icon_size: 20
+      label_size: 25
+      info_icon_size: 15
+      phone_number:
+        maxLength: 10
   category:
     phone_id: 1
     laptop_id: 7

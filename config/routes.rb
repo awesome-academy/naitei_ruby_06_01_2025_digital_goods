@@ -7,6 +7,8 @@ Rails.application.routes.draw do
     get "/login", to: "sessions#new"
     post "/login", to: "sessions#create"
     get "/product_detail/:id", to: "products#show"
+    get "/order-lookup", to: "orders#show_track"
+    get "/order-track", to: "orders#find_order"
     resources :users do
       member do
         get :cart, to: "carts#show"

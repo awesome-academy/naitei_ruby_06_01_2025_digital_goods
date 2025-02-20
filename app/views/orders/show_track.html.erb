@@ -1,0 +1,41 @@
+<% provide(:title, t("title.order_lookup")) %>
+<div class="order-lookup">
+  <div class="order-lookup__header">
+    <div class="order-lookup__header-content">
+      <%= bootstrap_icon "house-door-fill", height: Settings.default.view.order_lookup.info_icon_size, class:"home-icon" %>
+      <%= t("view.order_lookup.home") %>
+      <%= bootstrap_icon "chevron-right", height: Settings.default.view.order_lookup.info_icon_size, class:"arrow-right-icon" %>
+      <%= t("view.order_lookup.title") %>
+    </div>
+  </div>
+
+  <div class="order-lookup__group">
+    <div class="order-lookup-container">
+      <p class="order-lookup-container__title">
+        <%= t("view.order_lookup.check_order_info") %> <span><br>&amp; <%= t("view.order_lookup.shipping_status") %></span>
+      </p>
+
+      <%= form_with url: order_track_path, method: :get, remote: true, data: {turbo_stream: true},
+        class: "order-lookup-container__form" do |f| %>
+        <div class="order-lookup-container__field">
+          <div class="order-lookup-container__input-group">
+            <%= f.label :phone, t("view.order_lookup.phone_number"), class: "order-lookup-container__label" %>
+            <%= f.text_field :phone, maxlength: Settings.default.view.order_lookup.phone_number.maxLength, required: true, class: "order-lookup-container__input" %>
+          </div>
+        </div>
+        <div class="order-lookup-container__field">
+          <div class="order-lookup-container__input-group">
+            <%= f.label :order_code, t("view.order_lookup.order_code"), class: "order-lookup-container__label" %>
+            <%= f.text_field :order_code, required: true, class: "order-lookup-container__input" %>
+          </div>
+        </div>
+        <%= f.submit t("view.order_lookup.check_order"), class: "button button--lookup-container-order" %>
+      <% end %>
+      <div class="order-lookup-container__background"></div>
+        <div class="order-lookup-container__image">
+          <%= image_tag "ship_logo.png", alt: "cps-icon" %>
+        </div>
+        <div id="order-info" class="order-lookup-container__info"></div>
+    </div>
+  </div>
+</div>

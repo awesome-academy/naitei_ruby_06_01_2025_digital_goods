@@ -13,10 +13,12 @@ $background-color: #f4f6f8;
 $focus-color: rgba(215, 0, 24, 0.1);
 $black-color: #333;
 $black-color-2: #4a4a4a;
+$black-color-3: #ccc;
 $yellow-color: #ffd700;
 $blue-color: #0066cc;
 $gray-color-1: #747373;
 $gray-color-2: #707070;
+$gray-color-3: #ccc;
 $gray-light-color-1: #999;
 $gray-light-color-2: #666;
 $gray-light-color-3: #e0e0e0;
@@ -26,6 +28,7 @@ $gray-light-color-6: #f3f4f6;
 $gray-light-color-7: #f8f9fa;
 $gray-light-color-8: #e9ecef;
 $gray-light-color-9: #637381;
+$gray-light-color-10: #e8e8e8;
 $blue-light-color-1: #e8f2ff;
 $border-color-gray: #e5e7eb;
 $border-color-gray-2: #d1d5db;
@@ -34,8 +37,29 @@ $border-color-gray-4: rgba(145, 158, 171, .239);
 $placeholder-color: #444444;
 $alert-waring-color: #a94442;
 $alert-waring-background: #f2dede;
+$label-color-1: #717171;
+$green-light-color-1: #28a745;
 $box-shadow-color-1: rgba(60, 64, 67, .1);
 $box-shadow-color-2: rgba(60, 64, 67, .15);
 $box-shadow-color-3: rgba(0, 0, 0, 0.15);
 $box-shadow-color-4: rgba(40, 124, 234, .15);
+$cancel-color:#dc3545;
+$pendding-color: #ffc107;
+$picking-color: #17a2b8;
+$shipping-color: #007bff;
+
+@mixin order-status-style($bg-color) {
+  background-color: $bg-color;
+  color: $white-color;
+  width: max-content;
+  font-size: 15px;
+  font-weight: 500;
+  padding: 5px 10px;
+  border-radius: 5px;
+}
+
+@mixin step-style($bg, $text) {
+  background-color: $bg;
+  color: $text;
+}
 

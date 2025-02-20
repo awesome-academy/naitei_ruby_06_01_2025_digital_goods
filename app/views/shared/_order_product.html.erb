@@ -1,0 +1,20 @@
+<div class="order__item">
+  <div class="order__item-wrapper">
+    <div class="order__item-image">
+      <%= image_tag "product_image.png" , class: "product-image" %>
+    </div>
+    <div class="order__item-details">
+      <span class="order__item-title">
+        <%= order_product.product[:product_title] %>
+      </span>
+      <span class="order__item-variant">
+        <%= t("view.order_lookup.color") %>
+          <%= order_product.product[:color] %>
+      </span>
+      <span class="order__item-quantity">
+        <%= t("view.order_lookup.quantity") %>
+          <%= order_product[:quantity] %>
+      </span>
+    </div>
+  </div>
+</div>

@@ -11,7 +11,6 @@ class OrdersController < ApplicationController
     ActiveRecord::Base.transaction do
       order = create_order
       create_order_items(order)
-
       if order.persisted?
         clear_cart
         flash[:success] = t("flash.order.created_successfully")
@@ -23,6 +22,22 @@ class OrdersController < ApplicationController
     end
 
     render :new
+  end
+
+  def show_track; end
+
+  def find_order
+    @order = Order.find_by(id: params[:order_code])
+
+    if valid_order?
+      set_order_details
+      respond_to do |format|
+        format.turbo_stream
+        format.html{render "show_track"}
+      end
+    else
+      handle_order_not_found
+    end
   end
 
   private
@@ -54,10 +69,41 @@ class OrdersController < ApplicationController
   def load_cart_data
     @cart_items = CartItem.checked_by_user(current_user.id)
     if @cart_items.empty?
-      flash[:warning] = t "flash.order.please_select_product"
+      flash[:error] = t "flash.order.please_select_product"
       redirect_to cart_user_path(current_user) and return
     end
     @products_price = total_price(@cart_items)
     @total_amount = total_amount(@products_price)
+  end
+
+  def full_address order
+    [
+      order.user_address[:location],
+      order.user_address.ward[:name],
+      order.user_address.district[:name],
+      order.user_address.province[:name]
+    ].compact.join(", ")
+  end
+
+  def valid_order?
+    @order&.user&.telephone == params[:phone]
+  end
+
+  def set_order_details
+    @order_products = @order.order_product
+    @total_price = total_price(@order_products)
+    @total_amount = total_amount(@total_price)
+    @user_order = User.find_by(id: @order[:user_id])
+    @location = full_address(@order)
+  end
+
+  def handle_order_not_found
+    respond_to do |format|
+      format.turbo_stream{head :no_content}
+      format.html do
+        flash[:error] = t("flash.order_lookup.order_not_found")
+        render "show_track"
+      end
+    end
   end
 end

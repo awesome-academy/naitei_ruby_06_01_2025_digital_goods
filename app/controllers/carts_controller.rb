@@ -55,7 +55,7 @@ class CartsController < ApplicationController
     if @cart_item.quantity < @cart_item.product.stock_quantity
       @cart_item.update(quantity: @cart_item.quantity + 1)
     else
-      flash.now[:alert] = t "flash.cart.stock_exceeded"
+      flash.now[:error] = t "flash.cart.stock_exceeded"
     end
   end
 

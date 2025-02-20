@@ -46,7 +46,7 @@
       </div>
 
       <div class="header__track">
-        <%= link_to "#" do %>
+        <%= link_to order_lookup_path do %>
           <%= bootstrap_icon "truck", height: Settings.default.view.header.icon_size, class:"action-logo" %>
           <div class="title-group">
             <span><%= t("view.header.order_lookup") %></span>
@@ -55,7 +55,7 @@
       </div>
 
       <div class="header__cart">
-        <%= link_to "#" do %>
+        <%= link_to cart_user_path(current_user) do %>
           <%= bootstrap_icon "cart", height: Settings.default.view.header.icon_size %>
           <div class="title-group">
             <span><%= t("view.header.shopping_cart") %></span>
