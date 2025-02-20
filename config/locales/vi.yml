@@ -6,6 +6,7 @@ vi:
     home: "Trang chủ"
     cart: "Giỏ hàng"
     order: "Đặt hàng"
+    order_lookup: "Tra cứu đơn hàng"
   view:
     header: 
       category: "Danh mục"
@@ -102,6 +103,27 @@ vi:
       success: "Đặt hàng thành công"
       place_order: "Đặt hàng"
       quantity: "Số lượng: "
+    order_lookup:
+      home: "Trang chủ"
+      title: "TRA CỨU TÌNH TRẠNG ĐƠN HÀNG ONLINE"
+      phone_number: "Số điện thoại"
+      order_code: "Mã đơn hàng"
+      status_pending: "Đang chờ xác nhận"
+      status_confirmed: "Quản trị viên đã xác nhận"
+      status_shipping: "Đang giao tới bạn"
+      status_delivered: "Đã giao thành công"
+      status_canceled: "Đã hủy"
+      color: "Màu sắc: "
+      quantity: "Số lượng: "
+      payment_info: "Thông tin thanh toán"
+      total_price: "Tổng tiền sản phẩm:"
+      shipping_fee: "Phí vận chuyển:"
+      amount_due: "Phải thanh toán:"
+      remaining_balance: "Còn phải thanh toán:"
+      customer_info: "Thông tin khách hàng"
+      check_order: "Kiểm tra"
+      check_order_info: "Kiểm tra thông tin đơn hàng"
+      shipping_status: "tình trạng vận chuyển"
   form:
     label:
       user:
@@ -157,3 +179,5 @@ vi:
       created_successfully: "Đơn hàng đã được tạo thành công!"
       creation_failed: "Đã xảy ra lỗi khi tạo đơn hàng!"
       please_select_product: "Vui lòng chọn sản phẩm"
+    order_lookup:
+      order_not_found: "Không tìm thấy đơn hàng hoặc số điện thoại không đúng."

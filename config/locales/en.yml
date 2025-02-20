@@ -6,6 +6,7 @@ en:
     home: "Home"
     cart: "Cart"
     order: "Order"
+    order_lookup: "Order Lookup"
   view:
     header: 
       category: "Category"
@@ -102,6 +103,27 @@ en:
       success: "Order placed successfully"
       place_order: "Place Order"
       quantity: "Quantity: "
+    order_lookup:
+      home: "Home"
+      title: "ONLINE ORDER STATUS LOOKUP"
+      phone_number: "Phone Number"
+      order_code: "Order Code"
+      status_pending: "Pending Confirmation"
+      status_confirmed: "Admin Confirmed"
+      status_shipping: "Out for Delivery"
+      status_delivered: "Successfully Delivered"
+      status_canceled: "Canceled"
+      color: "Color: "
+      quantity: "Quantity: "
+      payment_info: "Payment Information"
+      total_price: "Total Product Price:"
+      shipping_fee: "Shipping Fee:"
+      amount_due: "Amount Due:"
+      remaining_balance: "Remaining Balance:"
+      customer_info: "Customer Information"
+      check_order: "Check"
+      check_order_info: "Check order details"
+      shipping_status: "shipping status"
   form:
     label:
       user:
@@ -157,3 +179,5 @@ en:
       created_successfully: "Order has been created successfully!"
       creation_failed: "An error occurred while creating the order!"
       please_select_product: "Please select a product"
+    order_lookup:
+      order_not_found: "Order not found or incorrect phone number."

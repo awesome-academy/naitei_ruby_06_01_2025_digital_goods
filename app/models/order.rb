@@ -12,4 +12,8 @@ class Order < ApplicationRecord
     shipping: Settings.default.order.order_status.shipping,
     delivered: Settings.default.order.order_status.delivered
   }
+
+  def order_product
+    order_items.includes(:product)
+  end
 end
