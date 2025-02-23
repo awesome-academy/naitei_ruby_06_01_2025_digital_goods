@@ -1,0 +1,28 @@
+@import '../variables';
+
+.order-status {
+  &-canceled {
+    @include order-status-style($cancel-color);
+  }
+
+  &-pending {
+    @include order-status-style($pendding-color);
+  }
+
+  &-picking {
+    @include order-status-style($picking-color);
+  }
+
+  &-shipping {
+    @include order-status-style($shipping-color);
+  }
+
+  &-delivered {
+    @include order-status-style($primary-color);
+  }
+
+  &-submit-btn{
+    border: none;
+    @include order-status-style($green-light-color-1);
+  }
+}

@@ -37,6 +37,9 @@ default: &default
       info_icon_size: 15
       phone_number:
         maxLength: 10
+    user:
+      menu_icon_size: 20
+      eye_icon_size: 15
   category:
     phone_id: 1
     laptop_id: 7
