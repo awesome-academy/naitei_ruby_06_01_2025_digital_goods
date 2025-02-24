@@ -1,0 +1,8 @@
+<%= link_to item[:path], method: item[:method], class: "menu__item #{item[:class]}" do %>
+  <div class="menu__icon">
+    <%= bootstrap_icon item[:icon], height: Settings.default.view.user.menu_icon_size, class: "menu__icon-svg" %>
+  </div>
+  <p class="menu__text">
+    <%= item[:text] %>
+  </p>
+<% end %>

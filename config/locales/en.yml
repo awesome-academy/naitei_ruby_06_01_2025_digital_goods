@@ -124,6 +124,28 @@ en:
       check_order: "Check"
       check_order_info: "Check order details"
       shipping_status: "shipping status"
+    user:
+      orders: "Orders"
+      total_spent: "Total Amount Spent"
+      order_code: "Order Code: "
+      total_amount: "Total Amount %{price} đ"
+      view_details: "View Details"
+      all: "All"
+      update_failed: "Unable to update order"
+      order_received: "Order received"
+      error_occurred: "An error occurred"
+      menu:
+        home: "Home"
+        purchase_history: "Purchase History"
+        warranty_lookup: "Warranty Lookup"
+        promotions: "Your Promotions"
+        s_edu_program: "S-Edu Program"
+        membership_rank: "Membership Rank"
+        account: "Your Account"
+        linked_accounts: "Linked Accounts"
+        support: "Support"
+        feedback: "Feedback & Suggestions"
+        logout: "Log Out"
   form:
     label:
       user:

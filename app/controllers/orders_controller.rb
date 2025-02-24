@@ -8,26 +8,29 @@ class OrdersController < ApplicationController
   end
 
   def create
-    ActiveRecord::Base.transaction do
-      order = create_order
-      create_order_items(order)
-      if order.persisted?
-        clear_cart
-        flash[:success] = t("flash.order.created_successfully")
-        redirect_to root_path and return
-      else
-        flash[:warning] = t("flash.order.creation_failed")
-        raise ActiveRecord::Rollback
-      end
-    end
+    order = create_order_with_items
 
-    render :new
+    if order&.persisted?
+      finalize_order_success
+    else
+      handle_order_failure(order)
+    end
   end
 
   def show_track; end
 
+  def history_order
+    status = Settings.default.order.order_status[params[:status].to_s]
+    @user_orders = current_user.orders_by_status(status)
+    @current_status = params[:status]
+    respond_to do |format|
+      format.turbo_stream
+      format.html{render "history_order"}
+    end
+  end
+
   def find_order
-    @order = Order.find_by(id: params[:order_code])
+    @order = find_order_by_id params[:order_code]
 
     if valid_order?
       set_order_details
@@ -40,7 +43,21 @@ class OrdersController < ApplicationController
     end
   end
 
+  def update
+    order = find_order_by_id params[:id]
+    after_status = params[:current_status].to_i + 1
+    if order.update(status: after_status)
+      handle_successful_update(params[:current_status].to_i)
+    else
+      flash.now[:error] = t "view.user.update_failed"
+    end
+  end
+
   private
+
+  def find_order_by_id order_code
+    Order.find_by(id: order_code)
+  end
 
   def create_order
     Order.create!(
@@ -104,6 +121,38 @@ class OrdersController < ApplicationController
         flash[:error] = t("flash.order_lookup.order_not_found")
         render "show_track"
       end
+    end
+  end
+
+  def create_order_with_items
+    ActiveRecord::Base.transaction do
+      order = create_order
+      create_order_items(order)
+      return order if order.persisted?
+
+      flash[:warning] = t("flash.order.creation_failed")
+      raise ActiveRecord::Rollback
+    end
+  rescue StandardError => e
+    flash[:error] = t("view.order.error_occurred", message: e.message)
+    nil
+  end
+
+  def finalize_order_success
+    clear_cart
+    flash[:success] = t("flash.order.created_successfully")
+    redirect_to root_path
+  end
+
+  def handle_order_failure _order
+    render :new
+  end
+
+  def handle_successful_update current_status
+    @user_orders = current_user.orders_by_status(current_status)
+    respond_to do |format|
+      format.turbo_stream{render "history_order"}
+      format.html{render "history_order"}
     end
   end
 end

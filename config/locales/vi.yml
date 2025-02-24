@@ -124,6 +124,28 @@ vi:
       check_order: "Kiểm tra"
       check_order_info: "Kiểm tra thông tin đơn hàng"
       shipping_status: "tình trạng vận chuyển"
+    user:
+      orders: "Đơn hàng"
+      total_spent: "Số tiền đã mua hàng"
+      order_code: "Mã đơn hàng: "
+      total_amount: "Tổng số tiền %{price} đ"
+      view_details: "Xem chi tiết"
+      all: "Tất cả"
+      update_failed: "Không thể cập nhật đơn hàng"
+      order_received: "Đã nhận được hàng"
+      error_occurred: "Có lỗi xảy ra %{message}"
+      menu:
+        home: "Trang chủ"
+        purchase_history: "Lịch sử mua hàng"
+        warranty_lookup: "Tra cứu bảo hành"
+        promotions: "Ưu đãi của bạn"
+        s_edu_program: "Chương trình S-Edu"
+        membership_rank: "Hạng thành viên"
+        account: "Tài khoản của bạn"
+        linked_accounts: "Liên kết tài khoản"
+        support: "Hỗ trợ"
+        feedback: "Góp ý - Phản hồi"
+        logout: "Thoát tài khoản"
   form:
     label:
       user:

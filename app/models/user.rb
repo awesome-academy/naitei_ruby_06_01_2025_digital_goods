@@ -90,6 +90,15 @@ class User < ApplicationRecord
       .find_by(address_default: true)
   end
 
+  def orders_by_status status_number
+    return orders if status_number.blank?
+
+    status_text = Order.statuses.key(status_number.to_i)
+    return Order.none if status_text.nil?
+
+    orders.where(status: status_text)
+  end
+
   private
 
   def downcase_email

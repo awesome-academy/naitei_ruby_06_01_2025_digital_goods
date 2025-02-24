@@ -1,0 +1,70 @@
+<div class="list-order-page">
+  <div class="list-order-page__container">
+    <div class="list-order-page__content">
+      <div class="list-order-page__content-left">
+        <div class="menu__list">
+          <%= render partial: "shared/sidebar_item", collection: menu_order_items, as: :item %>
+        </div>
+      </div>
+
+      <div class="list-order-page__content-right">
+        <div class="content-box">
+          <div class="welcome__content">
+            <div class="welcome__avatar">
+              <%= image_tag "ship_logo.png" , alt: "cps-icon" ,
+                class: "welcome__avatar-img" %>
+            </div>
+  
+            <div class="welcome__member">
+              <p class="welcome__member-name"><%= current_user.full_name %></p>
+  
+              <div class="welcome__member-info">
+                <p class="welcome__phone"><%= current_user.telephone %></p>
+              </div>
+            </div>
+          </div>
+
+          <div class="stats-menu">
+            <div class="stats-menu__container">
+              <div class="stats-menu__item item-1">
+                <p class="stats-menu__number"><%= @user_orders.length %></p>
+                <p class="stats-menu__label"><%= t("view.user.orders") %></p>
+              </div>
+          
+              <div class="stats-menu__item">
+                <p class="stats-menu__number">0đ</p>
+                <p class="stats-menu__label"><%= t("view.user.total_spent") %></p>
+              </div>
+            </div>
+          </div>
+
+          <div class="status-change-container gallery-thumbs">
+            <div class="thumbs-wrapper is-flex">
+              <%= link_to orders_users_path, 
+                  class: "thumb-item #{@current_status.blank? ? 'swiper-slide-thumb-active' : ''}" do %>
+                <div class="status-btn-change">
+                  <span><%= t("view.user.all") %></span>
+                </div>
+              <% end %>
+              
+              <% order_status_data.each do |status, data| %>
+                <%= link_to orders_users_path(status: status), 
+                    class: "thumb-item #{@current_status.to_s == status ? 'swiper-slide-thumb-active' : ''}", remote: true do %>
+                  <div class="status-btn-change active">
+                    <span><%= data[:label] %></span>
+                  </div>
+                <% end %>
+              <% end %>
+            </div>
+          </div>
+
+          <div class="order-list-container">
+            <div class="order-list-group" id="order-list-group">
+              <%= render partial: "order_group_item", collection: @user_orders, as: :order %>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

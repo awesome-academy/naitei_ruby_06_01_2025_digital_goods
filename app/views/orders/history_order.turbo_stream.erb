@@ -1,0 +1,7 @@
+<turbo-stream action="replace" target="order-list-group" data-action="element">
+  <template>
+    <div class="order-list-group" id="order-list-group">
+      <%= render partial: "order_group_item", collection: @user_orders, as: :order, formats: [:html] %>
+    </div>
+  </template>
+</turbo-stream>

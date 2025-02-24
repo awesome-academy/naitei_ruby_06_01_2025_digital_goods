@@ -1,0 +1,34 @@
+<div class="order-item-group">
+  <div class="order-item-group__status">
+    <% if order.status_before_type_cast == Settings.default.order.order_status.shipping %>
+      <%= button_to order_path(order, current_status: order.status_before_type_cast), class:"order-status-submit-btn", method: :patch, remote: true do %>
+        <span><%= t("view.user.order_received") %></span>
+      <% end %>
+    <%else%>
+      <%= order_status_tag order %>
+    <% end %>
+  </div>
+
+  <div class="order-item-group__code">
+    <span class="order-code">
+      <%= t("view.user.order_code") %>
+        <%= order[:id] %>
+    </span>
+    <span class="order-create-at">
+      <%= format_datetime order[:created_at] %>
+    </span>
+  </div>
+
+  <div class="order-item-group__product-list">
+    <%= render partial: "shared/order_product" , collection: order.order_product, as: :order_product %>
+  </div>
+
+  <div class="order-item-group__detail">
+    <div class="total-price">
+      <%= t("view.user.total_amount", price: product_price(order[:total_price]) ) %>
+    </div>
+    <div class="see-details-btn">
+      <%= t("view.user.view_details") %>
+    </div>
+  </div>
+</div>

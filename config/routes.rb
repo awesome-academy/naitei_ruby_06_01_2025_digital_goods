@@ -16,6 +16,10 @@ Rails.application.routes.draw do
         delete :cart, to: "carts#destroy"
         patch :cart_checked, to: "carts#update_checked"
       end
+
+      collection do
+        get :orders, to: "orders#history_order"
+      end
     end
     resources :products
     resources :orders
