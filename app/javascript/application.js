@@ -2,3 +2,4 @@
 import '@hotwired/turbo-rails'
 import 'controllers'
 import './custom/cart'
+import './custom/filter_category'

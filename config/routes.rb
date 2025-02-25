@@ -1,5 +1,4 @@
 Rails.application.routes.draw do
-  get 'orders/new'
   scope "(:locale)", locale: /en|vi/ do
     root "static_pages#home"
     get "/signup", to: "users#new"
@@ -23,5 +22,9 @@ Rails.application.routes.draw do
     end
     resources :products
     resources :orders
+
+    namespace :admin do 
+      resources :products
+    end
   end
 end

@@ -40,6 +40,10 @@ default: &default
     user:
       menu_icon_size: 20
       eye_icon_size: 15
+    admin:
+      arrow_icon_size: 15
+      search_icon_size: 20
+      filter_icon_size: 28
   category:
     phone_id: 1
     laptop_id: 7

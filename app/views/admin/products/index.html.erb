@@ -1,0 +1,91 @@
+<% provide(:title, t("title.products") ) %>
+  <div class="list-product-page">
+    <div class="list-product-page__container">
+      <div class="list-product-page__content">
+        <div class="list-product-page__content-left">
+          <div class="menu__list">
+            <%= render partial: "shared/sidebar_item", collection: admin_page_menu, as: :item %>
+          </div>
+        </div>
+
+        <div class="list-product-page__content-right">
+          <div class="content-box">
+            <div class="welcome__content">
+              <div class="welcome__avatar">
+                <%= image_tag "ship_logo.png", alt: "cps-icon", class: "welcome__avatar-img" %>
+              </div>
+
+              <div class="welcome__member">
+                <p class="welcome__member-name"><%= current_user.full_name %></p>
+
+                <div class="welcome__member-info">
+                  <p class="welcome__phone"><%= current_user.telephone %></p>
+                </div>
+              </div>
+            </div>
+
+            <div class="stats-menu">
+              <div class="stats-menu__container">
+                <div class="stats-menu__item item-1">
+                  <p class="stats-menu__number"><%= @total_stock %></p>
+                  <p class="stats-menu__label"><%= t("view.admin.product.stock_quantity") %></p>
+                </div>
+
+                <div class="stats-menu__item">
+                  <p class="stats-menu__number"><%= @sold_out_count %></p>
+                  <p class="stats-menu__label"><%= t("view.admin.product.out_of_stock") %></p>
+                </div>
+              </div>
+            </div>
+
+            <div class="list-products-group">
+              <div class="list-products-group__title">
+                <span class="title">
+                  <%= t("view.admin.product.product_list") %>
+                </span>
+              </div>
+
+              <div class="search-form-group">
+                <%= form_with url: "#", method: :get, local: true, class: "search-form" do |f| %>
+                  <span class="icon-search">
+                    <%= bootstrap_icon "search", height: Settings.default.view.admin.search_icon_size %>
+                  </span>
+                  <%= f.text_field :search, class: "input-search", placeholder: t("view.admin.product.search_product") %>
+                    <% end %>
+              </div>
+
+              <div class="filter-group" id="filter-group">
+                <div class="icon-filter">
+                  <%= bootstrap_icon "filter", height: Settings.default.view.admin.filter_icon_size, class:"filter" %>
+                </div>
+
+                <div class="filter-container" id="filter-container-1">
+                  <%= render partial: "admin/products/category_filter", locals: { text_field_content:
+                    @category_lv1_name ||t("view.admin.product.select_category") , categories: @categories_lv1 } %>
+                </div>
+
+                <div class="filter-container" id="filter-container-2">
+                  <span class="text_field"><%= t("view.admin.product.filter_by") %></span>
+                  <%= bootstrap_icon "chevron-down", height: Settings.default.view.admin.arrow_icon_size %>
+
+                  <div class="list-categories">
+                    <span><%= t("view.admin.product.no_data") %></span>
+                  </div>
+                </div>
+
+                <div class="filter-container" id="filter-container-3">
+                  <span class="text_field"><%= t("view.admin.product.filter_by") %></span>
+                  <%= bootstrap_icon "chevron-down", height: Settings.default.view.admin.arrow_icon_size %>
+
+                  <div class="list-categories">
+                    <span><%= t("view.admin.product.no_data") %></span>
+                  </div>
+                </div>
+              </div>
+              <%= render partial: "admin/products/product_table", locals: { products: @products } %>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>

@@ -7,6 +7,7 @@ en:
     cart: "Cart"
     order: "Order"
     order_lookup: "Order Lookup"
+    products: "Product List"
   view:
     header: 
       category: "Category"
@@ -145,7 +146,27 @@ en:
         linked_accounts: "Linked Accounts"
         support: "Support"
         feedback: "Feedback & Suggestions"
+        product: "Product"
+        order: "Order"
+        admin_list: "Admin List"
+        user_list: "User List"
         logout: "Log Out"
+    admin:
+      product:
+        stock_quantity: "Remaining stock quantity"
+        out_of_stock: "Out of stock products"
+        product_list: "Product List"
+        image: "Image"
+        title: "Title"
+        price: "Price"
+        discount: "Discount"
+        in_stock: "In Stock"
+        edit: "Edit"
+        search_product: "Search for products"
+        select_category: "Select category"
+        no_data_display: "No data to display"
+        filter_by: "Filter by"
+        no_data: "No data"
   form:
     label:
       user:

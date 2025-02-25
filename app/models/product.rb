@@ -28,6 +28,9 @@ class Product < ApplicationRecord
                                .distinct
                            }
 
+  scope :total_stock, ->{sum(:stock_quantity)}
+  scope :sold_out_count, ->{where(stock_quantity: 0).count}
+
   def load_attributes
     product_attributes.includes(:attribute_group)
   end

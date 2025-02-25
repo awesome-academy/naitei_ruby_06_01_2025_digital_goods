@@ -1,0 +1,19 @@
+﻿<% categories_filter.each do |filter| %>
+  <turbo-stream action="replace" target="<%= filter[:target] %>" data-action="element">
+    <template>
+      <div class="filter-container" id="<%= filter[:target] %>">
+        <%= render partial: "category_filter", 
+                  locals: { 
+                    text_field_content: filter[:text], 
+                    categories: filter[:categories] 
+                  }, formats: [:html] %>
+      </div>
+    </template>
+  </turbo-stream>
+<% end %>
+
+<turbo-stream action="replace" target="product-table-list" data-action="element">
+  <template>
+    <%= render partial: "product_table" , locals: { products: @products }, formats: [:html] %>
+  </template>
+</turbo-stream>
