@@ -1,0 +1,17 @@
+﻿<span class="text_field"><%= text_field_content %></span>
+<%= bootstrap_icon "chevron-down", height: 15 %>
+<% if categories.present? %>
+  <div class="list-categories">
+    <% categories.each do |category| %>
+      <%= form_with url: admin_products_path, method: :get, data: { turbo_stream: true } do %>
+        <%= hidden_field_tag :level, category.level %>
+        <%= hidden_field_tag :path, category.path %>
+        <%= submit_tag category.name, class: "item-category select-item" %>
+      <% end %>
+    <% end %>
+  </div>
+<% else %>
+  <div class="list-categories">
+    <span><%= t("view.admin.product.no_data") %></span>
+  </div>
+<% end %>

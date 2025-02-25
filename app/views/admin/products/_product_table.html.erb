@@ -1,0 +1,38 @@
+﻿<div class="product-table-group" id="product-table-list">
+  <table class="product-table">
+    <thead>
+      <tr>
+        <th><%= t("view.admin.product.image") %></th>
+        <th><%= t("view.admin.product.title") %></th>
+        <th><%= t("view.admin.product.price") %></th>
+        <th><%= t("view.admin.product.discount") %></th>
+        <th><%= t("view.admin.product.in_stock") %></th>
+        <th><%= t("view.admin.product.edit") %></th>
+      </tr>
+    </thead>
+    <tbody>
+      <% products.each do |product| %>
+        <tr>
+          <td>
+            <%= image_tag "ship_logo.png", alt: "cps-icon", class: "welcome__avatar-img" %>
+          </td>
+          <td>
+            <%= product[:product_title] %>
+          </td>
+          <td>
+            <%= product_price product[:price] %>đ
+          </td>
+          <td>
+            <%= product[:discount] %> %
+          </td>
+          <td>
+            <%= product[:stock_quantity] %>
+          </td>
+          <td>
+            <a href="#" class="edit-btn"><%= t("view.admin.product.edit") %></a>
+          </td>
+        </tr>
+        <% end %>
+    </tbody>
+  </table>
+</div>

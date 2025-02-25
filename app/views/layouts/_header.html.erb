@@ -26,13 +26,12 @@
 
     <div class="header__search">
       <%= form_with url: "#", method: :get, local: true do |f| %>
-      <%= f.text_field :q, placeholder: t("view.header.placeholder_search"), class: "search-input" %>
+        <%= f.text_field :q, placeholder: t("view.header.placeholder_search"), class:"search-input" %>
         <%= f.button class: "search-button" do %>
-          <%= bootstrap_icon "search", height: Settings.default.view.header.icon_size, class:"icon-search"  %>
+          <%= bootstrap_icon "search", height: Settings.default.view.header.icon_size, class:"icon-search" %>
         <% end %>
       <% end %>
     </div>
-
 
     <div class="header__actions">
       <div class="header__hotline">
@@ -54,14 +53,16 @@
         <% end %>
       </div>
 
-      <div class="header__cart">
-        <%= link_to cart_user_path(current_user) do %>
-          <%= bootstrap_icon "cart", height: Settings.default.view.header.icon_size %>
-          <div class="title-group">
-            <span><%= t("view.header.shopping_cart") %></span>
-          </div>
-        <% end %>
-      </div>
+      <% if current_user %>
+        <div class="header__cart">
+          <%= link_to cart_user_path(current_user) do %>
+            <%= bootstrap_icon "cart", height: Settings.default.view.header.icon_size %>
+            <div class="title-group">
+              <span><%= t("view.header.shopping_cart") %></span>
+            </div>
+          <% end %>
+        </div>
+      <% end %>
 
       <div class="header__profile">
         <%= link_to (logged_in? ? "#" : login_path), class:"profile-group" do %>
