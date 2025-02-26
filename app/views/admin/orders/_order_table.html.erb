@@ -1,0 +1,26 @@
+﻿<div class="order-table-group" id="order-table-list">
+  <table class="order-table">
+    <thead>
+      <tr>
+        <th><%= t("view.admin.order.order_code") %></th>
+        <th><%= t("view.admin.order.recipient") %></th>
+        <th><%= t("view.admin.order.phone_number") %></th>
+        <th><%= t("view.admin.order.address") %></th>
+        <th><%= t("view.admin.order.status") %></th>
+        <th><%= t("view.admin.order.details") %></th>
+      </tr>
+    </thead>
+    <tbody>
+      <% orders.each do |order| %>
+        <tr>
+          <td><%= order.id %></td>
+          <td><%= order.user[:full_name] %></td>
+          <td><%= order.user[:telephone] %></td>
+          <td><%= full_address order %></td>
+          <td><%= order_status_tag_admin order %></td>
+          <td><%= link_to t("view.admin.order.details"), "#", class: "btn btn-primary detail-btn" %></td>
+        </tr>
+      <% end %>
+    </tbody>
+  </table>
+</div>

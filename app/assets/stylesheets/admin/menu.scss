@@ -1,0 +1,49 @@
+﻿@import '../variables';
+
+.menu__list {
+  background-color: $menu-background-color;
+  border-radius: 15px;
+  padding: 10px;
+  position: sticky;
+  top: 74px;
+
+  .menu__item {
+    cursor: pointer;
+    margin-bottom: 15px;
+    padding: .5px 10px;
+    position: relative;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    gap: 12px;
+
+    .menu__icon-svg {
+      color: $black-color;
+    }
+
+    .menu__text {
+      text-align: center;
+      align-items: center;
+      font-size: 15px;
+      color: $menu-text-color;
+      font-size: 15px;
+      font-weight: 400;
+      margin-bottom: 0;
+      text-decoration: none;
+
+      &:hover {
+        text-decoration: none;
+      }
+    }
+
+    &:hover {
+      background-color: $menu-background-color;
+      border: .5px solid $primary-color;
+      border-radius: 10px;
+
+      .menu__text {
+        color: $primary-color;
+      }
+    }
+  }
+}

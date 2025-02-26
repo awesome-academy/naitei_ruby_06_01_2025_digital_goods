@@ -13,6 +13,8 @@ class Order < ApplicationRecord
     delivered: Settings.default.order.order_status.delivered
   }
 
+  scope :by_status, ->(status){where(status:) if status.present?}
+
   def order_product
     order_items.includes(:product)
   end

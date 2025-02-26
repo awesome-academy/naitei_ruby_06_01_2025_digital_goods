@@ -8,11 +8,14 @@ Rails.application.routes.draw do
     get "/product_detail/:id", to: "products#show"
     get "/order-lookup", to: "orders#show_track"
     get "/order-track", to: "orders#find_order"
+    delete "/logout",  to: "sessions#destroy", as: 'logout'
+
     resources :users do
       member do
         get :cart, to: "carts#show"
         patch :cart, to: "carts#update"
         delete :cart, to: "carts#destroy"
+        post :cart, to: "carts#create"
         patch :cart_checked, to: "carts#update_checked"
       end
 
@@ -25,6 +28,7 @@ Rails.application.routes.draw do
 
     namespace :admin do 
       resources :products
+      resources :orders
     end
   end
 end

@@ -1,5 +1,5 @@
 ﻿<span class="text_field"><%= text_field_content %></span>
-<%= bootstrap_icon "chevron-down", height: 15 %>
+<%= bootstrap_icon "chevron-down", height: Settings.default.view.admin.arrow_icon_size %>
 <% if categories.present? %>
   <div class="list-categories">
     <% categories.each do |category| %>

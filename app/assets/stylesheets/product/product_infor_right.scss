@@ -145,6 +145,11 @@
       font-weight: 500;
       cursor: pointer;
       font-size: 16px;
+
+      button {
+        border: none;
+        background: transparent;
+      }
     }
 
     &__cart {
@@ -171,6 +176,11 @@
         align-items: center;
         text-align: center;
         color: $cart-color;
+      }
+
+      button {
+        border: none;
+        background: transparent;
       }
     }
   }

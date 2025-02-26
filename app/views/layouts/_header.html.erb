@@ -14,7 +14,7 @@
     </div>
 
     <div class="header__location">
-      <%= bootstrap_icon "geo-alt", height: Settings.default.view.header.icon_location_size, class:"icon-location" %>
+      <%= bootstrap_icon "geo-alt", height: Settings.default.view.header.icon_location_size, class: "icon-location" %>
       <div class="title-group">
         <span class="title-group__title">
           <%= t("view.header.see_price_at") %>
@@ -26,9 +26,9 @@
 
     <div class="header__search">
       <%= form_with url: "#", method: :get, local: true do |f| %>
-        <%= f.text_field :q, placeholder: t("view.header.placeholder_search"), class:"search-input" %>
+        <%= f.text_field :q, placeholder: t("view.header.placeholder_search"), class: "search-input" %>
         <%= f.button class: "search-button" do %>
-          <%= bootstrap_icon "search", height: Settings.default.view.header.icon_size, class:"icon-search" %>
+          <%= bootstrap_icon "search", height: Settings.default.view.header.icon_size, class: "icon-search" %>
         <% end %>
       <% end %>
     </div>
@@ -36,7 +36,7 @@
     <div class="header__actions">
       <div class="header__hotline">
         <%= link_to "#" do %>
-          <%= bootstrap_icon "telephone", height: Settings.default.view.header.icon_size, class:"action-logo" %>
+          <%= bootstrap_icon "telephone", height: Settings.default.view.header.icon_size, class: "action-logo" %>
           <div class="title-group">
             <span class="title-group__title"><%= t("view.header.call_to_buy") %></span>
             <span class="title-group__subtitle">1800 1234</span>
@@ -46,7 +46,7 @@
 
       <div class="header__track">
         <%= link_to order_lookup_path do %>
-          <%= bootstrap_icon "truck", height: Settings.default.view.header.icon_size, class:"action-logo" %>
+          <%= bootstrap_icon "truck", height: Settings.default.view.header.icon_size, class: "action-logo" %>
           <div class="title-group">
             <span><%= t("view.header.order_lookup") %></span>
           </div>
@@ -64,8 +64,8 @@
         </div>
       <% end %>
 
-      <div class="header__profile">
-        <%= link_to (logged_in? ? "#" : login_path), class:"profile-group" do %>
+      <div class="header__profile" id="account">
+        <%= link_to (logged_in? ? "#" : login_path), class: "profile-group" do %>
           <%= bootstrap_icon "person-circle", height: Settings.default.view.header.icon_size %>
           <div class="title-group">
             <% if logged_in? %>
@@ -73,6 +73,12 @@
             <% else %>
               <span><%= t("title.sign_in") %></span>
             <% end %>
+          </div>
+        <% end %>
+        <% if logged_in? %>
+          <div class="account-menu" id="account-menu">
+            <%= button_to "Profile", orders_users_path, method: :get, class: "account-menu__profile", form: { data: { turbo: true } } %>
+            <%= button_to "Logout", logout_path, method: :delete, class: "account-menu__logout", form: { data: { turbo: true } } %>
           </div>
         <% end %>
       </div>

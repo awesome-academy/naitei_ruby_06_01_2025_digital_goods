@@ -1,9 +1,19 @@
 class CartsController < ApplicationController
   before_action :load_user, :logged_in_user, :correct_user,
-                only: %i(show update destroy)
+                only: %i(show update destroy create)
 
   def show
     @cart_products = current_user.cart_products_quantity
+  end
+
+  def create
+    @cart_item = find_or_build_cart_item
+
+    if @cart_item.save
+      redirect_to cart_user_path(current_user)
+    else
+      redirect_to products_path(id: params[:product_id])
+    end
   end
 
   def update
@@ -66,6 +76,14 @@ class CartsController < ApplicationController
       product_id = @cart_item.product_id
       @cart_item.destroy
       render turbo_stream: turbo_stream.remove("cart-item-#{product_id}")
+    end
+  end
+
+  def find_or_build_cart_item
+    current_user.cart_items
+                .find_or_initialize_by(product_id: params[:product_id])
+                .tap do |item|
+      item.quantity = item.new_record? ? 1 : item.quantity + 1
     end
   end
 end

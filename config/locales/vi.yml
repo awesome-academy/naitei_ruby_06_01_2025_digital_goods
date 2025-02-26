@@ -8,6 +8,7 @@ vi:
     order: "Đặt hàng"
     order_lookup: "Tra cứu đơn hàng"
     products: "Danh sách sản phẩm"
+    orders: "Danh sách đơn hàng"
   view:
     header: 
       category: "Danh mục"
@@ -167,6 +168,17 @@ vi:
         no_data_display: "Không có dữ liệu hiển thị"
         filter_by: "Chọn lọc theo"
         no_data: "Không có dữ liệu"
+      order:
+        order_status: "Trạng thái đơn hàng"
+        all: "Tất cả"
+        order_code: "Mã đơn hàng"
+        recipient: "Người nhận"
+        phone_number: "Số điện thoại"
+        address: "Địa chỉ"
+        status: "Trạng thái"
+        details: "Chi tiết"
+        delivering_to_customer: "Đang giao tới khách hàng"
+        order_list: "Danh sách đơn hàng"
   form:
     label:
       user:
