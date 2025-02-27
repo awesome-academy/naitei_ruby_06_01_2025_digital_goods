@@ -29,4 +29,34 @@
 
     content_tag(:div, status_info[:label], class: status_info[:css_class])
   end
+
+  def order_status_tag_update order
+    status_info = order_status_admin[order.status]
+    return unless status_info
+
+    button_text = determine_button_text(order)
+
+    if button_text
+      button_to button_text,
+                admin_order_path(order,
+                                 current_status: order.status_before_type_cast),
+                method: :patch,
+                class: status_info[:css_class]
+    else
+      content_tag(:div, status_info[:label], class: status_info[:css_class])
+    end
+  end
+
+  private
+
+  def determine_button_text order
+    case order.status_before_type_cast
+    when Settings.default.order.order_status.pending
+      t("view.admin.order.confirm")
+    when Settings.default.order.order_status.picking
+      t("view.admin.order.start_shipping")
+    when Settings.default.order.order_status.shipping
+      t("view.admin.order.user_received")
+    end
+  end
 end

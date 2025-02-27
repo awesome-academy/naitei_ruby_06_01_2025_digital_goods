@@ -44,6 +44,7 @@ default: &default
       arrow_icon_size: 15
       search_icon_size: 20
       filter_icon_size: 28
+      close_model_size: 25
   category:
     phone_id: 1
     laptop_id: 7

@@ -52,6 +52,7 @@ $menu-background-color: #f6fbfc;
 $menu-text-color: #686868;
 $menu-hover-color: #fee;
 $pink-color: #a83288;
+$background-color-gray: rgba(0, 0, 0, 0.5);
 
 @mixin order-status-style($bg-color) {
   background-color: $bg-color;

@@ -16,9 +16,14 @@
           <td><%= order.id %></td>
           <td><%= order.user[:full_name] %></td>
           <td><%= order.user[:telephone] %></td>
-          <td><%= full_address order %></td>
-          <td><%= order_status_tag_admin order %></td>
-          <td><%= link_to t("view.admin.order.details"), "#", class: "btn btn-primary detail-btn" %></td>
+          <td><%= full_address(order) %></td>
+          <td id="detail-btn-<%= order.id %>"><%= order_status_tag_admin(order) %></td>
+          <td>
+            <%= link_to t("view.admin.order.details"), admin_order_path(order), 
+                        class: "btn btn-primary detail-btn", 
+                        data: { turbo_stream: true, turbo_method: :get, order_id: order.id }, 
+                        remote: true %>
+          </td>
         </tr>
       <% end %>
     </tbody>

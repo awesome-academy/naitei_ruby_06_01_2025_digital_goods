@@ -179,6 +179,9 @@ en:
         details: "Details"
         delivering_to_customer: "Delivering to Customer"
         order_list: "Order List"
+        confirm: "Confirm"
+        start_shipping: "Start Shipping"
+        user_received: "User Has Received the Order"
   form:
     label:
       user:
