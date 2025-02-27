@@ -1,79 +1,14 @@
 <turbo-stream action="update" target="order-info" data-action="element">
   <template>
-    <div class="order-box">
-      <div class="order-status">
-        <%= order_status_tag(@order) %>
-        <div class="order-tracking">
-          <% order_status_data.each_with_index do |(status, data), index| %>
-            <% next if index == Settings.default.order.order_status.canceled %> 
-            <% active = @order.status_before_type_cast >= index %>
-            <div class="tracking-step <%= "active" if active %>">
-              <div class="icon">
-                <%= bootstrap_icon data[:icon], height: Settings.default.view.order_lookup.status_icon_size, class: "status-icon" %>
-              </div>
-              <div class="text"><%= data[:label] %></div>
-            </div>
-            <% if index < order_status_data.size - 1 %>
-              <div class="tracking-line <%= "active" if active %>"></div>
-            <% end %>
-          <% end %>
-        </div>
-      </div>
-      <div class="order__products">
-        <div class="order__products-list" id="order-products-list">
-          <%= render partial: "shared/order_product", collection: @order_products, as: :order_product, formats: [:html] %>
-        </div>
-      </div>
-
-      <div class="order__payment">
-        <div class="order__payment-block">
-          <div class="order__payment-header">
-            <%= bootstrap_icon "credit-card", height: Settings.default.view.order_lookup.label_size, class: "order__payment-header-icon" %>
-              <p class="order__payment-header-text"><%= t("view.order_lookup.payment_info") %></p>
-          </div>
-
-          <div class="order__payment-content">
-            <div class="order__payment-row">
-              <p class="order__payment-row__label"><%= t("view.order_lookup.total_price") %></p>
-              <p class="order__payment-row__value"><%= product_price @total_price %>đ</p>
-            </div>
-            <div class="order__payment-row">
-              <p class="order__payment-row__label"><%= t("view.order_lookup.shipping_fee") %></p>
-              <p class="order__payment-row__value"><%= product_price Settings.default.order.delivery_fee %>đ</p>
-            </div>
-            <div class="order__payment-row order__payment-row--total">
-              <p class="order__payment-row__label"><%= t("view.order_lookup.amount_due") %></p>
-              <p class="order__payment-row__value order__payment-value--total"><%= product_price @total_amount %>đ</p>
-            </div>
-            <div class="order__payment-row order__payment-row--final">
-              <p class="order__payment-row__label"><%= t("view.order_lookup.remaining_balance") %></p>
-              <p class="order__payment-row__value order__payment-value--final"><%= product_price @total_amount %>đ</p>
-            </div>
-          </div>
-        </div>
-
-        <div class="order__customer">
-          <div class="order__customer-header">
-            <%= bootstrap_icon "person-circle", height: Settings.default.view.order_lookup.label_size, class: "order__payment-header-icon" %>
-              <p class="order__header-text"><%= t("view.order_lookup.customer_info") %></p>
-          </div>
-
-          <div class="order__customer-content">
-            <div class="order__customer-row">
-              <%= bootstrap_icon "person-lines-fill", height: Settings.default.view.order_lookup.info_icon_size, class: "order__contact-icon" %>
-                <div class="order__contact-text"><%= @user_order[:full_name] %></div>
-            </div>
-            <div class="order__customer-row">
-              <%= bootstrap_icon "telephone", height: Settings.default.view.order_lookup.info_icon_size, class: "order__contact-icon" %>
-                <div class="order__contact-text"><%= @user_order[:telephone] %></div>
-            </div>
-            <div class="order__customer-row">
-              <%= bootstrap_icon "geo-alt", height: Settings.default.view.order_lookup.info_icon_size, class: "order__contact-icon" %>
-                <div class="order__contact-text"><%= @location %></div>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
-  </template>
+    <%= render partial: "shared/show_detail_order", locals: { 
+      order: @order, 
+      order_status_data: order_status_data, 
+      order_products: @order_products, 
+      total_amount: @total_amount, 
+      user_order: @user_order, 
+      location: @location, 
+      total_price: @total_price
+    },
+    formats: [:html] %>
+    </template>
 </turbo-stream>

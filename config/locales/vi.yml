@@ -179,6 +179,9 @@ vi:
         details: "Chi tiết"
         delivering_to_customer: "Đang giao tới khách hàng"
         order_list: "Danh sách đơn hàng"
+        confirm: "Xác nhận"
+        start_shipping: "Bắt đầu vận chuyển"
+        user_received: "Người dùng đã nhận hàng"
   form:
     label:
       user:

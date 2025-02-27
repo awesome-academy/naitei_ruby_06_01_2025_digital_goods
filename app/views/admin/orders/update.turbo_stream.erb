@@ -1,0 +1,21 @@
+﻿<turbo-stream action="replace" target="detail-btn-<%= @order.id %>">
+  <template>
+    <td id="<%= "detail-btn-#{@order.id}" %>"><%= order_status_tag_admin @order %></td>
+  </template>
+</turbo-stream>
+
+<turbo-stream action="replace" target="btn-update-<%= @order.id%>">
+  <template>
+    <div class="btn-update" id="btn-update-<%= @order.id %>">
+      <%= order_status_tag_update @order %>
+    </div>
+  </template>
+</turbo-stream>
+
+<turbo-stream action="replace" target="order-tracking-<%= @order.id %>">
+  <template>
+    <div class="order-tracking" id="order-tracking-<%= @order.id %>">
+      <%= render partial: "shared/show_look_up", locals: { order: @order }, formats: [:html] %>
+    </div>
+  </template>
+</turbo-stream>

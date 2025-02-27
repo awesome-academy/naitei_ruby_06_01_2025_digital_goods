@@ -92,4 +92,17 @@
       </div>
     </div>
   </div>
+
+  <div class="orders-management__detail">
+    <div class="orders-management__detail-container">
+      <div class="title-group">
+        <span></span>
+        <span><%= t("view.admin.order.order_status") %></span>
+        <%= bootstrap_icon "x" , height: Settings.default.view.admin.close_model_size, class: "icon-x" %>
+      </div>
+      <div class="order-status-content">
+        <div id="order-info" class="order-detail"></div>
+      </div>
+    </div>
+  </div>
 </div>

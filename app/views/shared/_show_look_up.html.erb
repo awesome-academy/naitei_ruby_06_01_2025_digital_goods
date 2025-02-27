@@ -1,0 +1,15 @@
+﻿<% order_status_data.each_with_index do |(status, data), index| %>
+  <% next if index == Settings.default.order.order_status.canceled %>
+  <% active = order.status_before_type_cast >= index %>
+  <div class="tracking-step <%= " active" if active %>">
+    <div class="icon">
+      <%= bootstrap_icon data[:icon], height: Settings.default.view.order_lookup.status_icon_size, class: "status-icon" %>
+    </div>
+    <div class="text">
+      <%= data[:label] %>
+    </div>
+  </div>
+  <% if index < order_status_data.size - 1 %>
+    <div class="tracking-line <%= " active" if active %>"></div>
+  <% end %>
+<% end %>

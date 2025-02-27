@@ -1,0 +1,14 @@
+﻿<turbo-stream action="update" target="order-info" data-action="element">
+  <template>
+  <%= render partial: "shared/show_detail_order", locals: { 
+    order: @order, 
+    order_status_data: order_status_admin, 
+    order_products: @order_products, 
+    total_amount: @total_amount, 
+    user_order: @user_order, 
+    location: @location, 
+    total_price: @total_price
+  },
+  formats: [:html] %>
+  </template>
+</turbo-stream>
