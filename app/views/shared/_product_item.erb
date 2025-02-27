@@ -13,7 +13,5 @@
   <div class="product-card__sale-price">
     <span><%= t("view.product_detail.product_cart.discount_price") %> <%= discounted_price(product[:price].to_i, product[:discount]) %> đ</span>
   </div>
-  <button class="product-card__button">
-    <%= t("view.product_detail.buy_now") %>
-  </button>
+  <%= link_to t("view.product_detail.buy_now"), product_path(product), class: "product-card__button" %>
 </div>

@@ -8,13 +8,27 @@ class OrdersController < ApplicationController
   end
 
   def create
-    order = create_order_with_items
+    order = nil
+    success = false
 
-    if order&.persisted?
-      finalize_order_success
-    else
-      handle_order_failure(order)
+    begin
+      ActiveRecord::Base.transaction do
+        order = create_order
+        create_order_items(order)
+
+        if order.persisted?
+          clear_cart
+          success = true
+        else
+          flash[:warning] = t("flash.order.creation_failed")
+          raise ActiveRecord::Rollback
+        end
+      end
+    rescue StandardError => e
+      flash[:error] = t("flash.order.error_occurred", error: e.message)
     end
+
+    redirect_after_create success
   end
 
   def show_track; end
@@ -83,6 +97,16 @@ class OrdersController < ApplicationController
     @cart_items.destroy_all
   end
 
+  def redirect_after_create success
+    if success
+      flash[:success] = t("flash.order.created_successfully")
+      redirect_to root_path and return
+    else
+      @delivery_address = current_user.default_address
+      render :new
+    end
+  end
+
   def load_cart_data
     @cart_items = CartItem.checked_by_user(current_user.id)
     if @cart_items.empty?
@@ -122,30 +146,6 @@ class OrdersController < ApplicationController
         render "show_track"
       end
     end
-  end
-
-  def create_order_with_items
-    ActiveRecord::Base.transaction do
-      order = create_order
-      create_order_items(order)
-      return order if order.persisted?
-
-      flash[:warning] = t("flash.order.creation_failed")
-      raise ActiveRecord::Rollback
-    end
-  rescue StandardError => e
-    flash[:error] = t("view.order.error_occurred", message: e.message)
-    nil
-  end
-
-  def finalize_order_success
-    clear_cart
-    flash[:success] = t("flash.order.created_successfully")
-    redirect_to root_path
-  end
-
-  def handle_order_failure _order
-    render :new
   end
 
   def handle_successful_update current_status

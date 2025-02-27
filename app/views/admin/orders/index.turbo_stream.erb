@@ -1,0 +1,11 @@
+﻿<turbo-stream action="replace" target="text_filter" data-action="element">
+  <template>
+    <span class="text_filter" id="text_filter" ><%= @text_filter%></span>
+  </template>
+</turbo-stream>
+
+<turbo-stream action="replace" target="order-table-list" data-action="element">
+  <template>
+    <%= render partial: "order_table" , locals: { orders: @orders }, formats: [:html] %>
+  </template>
+</turbo-stream>

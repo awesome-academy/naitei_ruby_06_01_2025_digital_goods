@@ -13,7 +13,7 @@ class SessionsController < ApplicationController
 
   def destroy
     log_out
-    redirect_to root_url, status: :see_other
+    redirect_to login_path, status: :see_other
   end
 
   private

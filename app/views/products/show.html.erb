@@ -1,136 +1,118 @@
 <% provide(:title, @product.product_title) %>
-  <div class="product-detail">
-    <div class="product-detail__header">
-      <div class="product-detail__header-content">
+<div class="product-detail">
+  <div class="product-detail__header">
+    <div class="product-detail__header-content"></div>
+  </div>
+  <div class="product-detail__container">
+    <div class="product-detail__container-content">
+      <div class="product-title-group">
+        <div class="product-title-group__title">
+          <span><%= @product.product_title %></span>
+        </div>
+        <div class="product-title-group__rating">
+          <% Settings.default.view.product_detail.star_count.times do %>
+            <%= bootstrap_icon "star-fill", height: Settings.default.view.item.icon_star_size, class: "star-icon" %>
+          <% end %>
+        </div>
       </div>
-    </div>
-    <div class="product-detail__container">
-      <div class="product-detail__container-content">
 
-        <div class="product-title-group">
-          <div class="product-title-group__title">
-            <span>
-              <%= @product.product_title %>
-            </span>
+      <div class="product-image-group">
+        <div class="product-image-group__left">
+          <div class="image-list-group">
+            <div class="image-list-group__img">
+              <%= image_tag "product_image.png", class: "product-image" %>
+            </div>
+            <div class="image-list-group__small">
+              <% Settings.default.view.product_detail.star_count.times do %>
+                <div class="img-small">
+                  <%= image_tag "product_image.png", class: "product-image" %>
+                </div>
+              <% end %>
+            </div>
           </div>
-          <div class="product-title-group__rating">
-            <% Settings.default.view.product_detail.star_count.times do %>
-              <%= bootstrap_icon "star-fill" , height: Settings.default.view.item.icon_star_size, class:"star-icon" %>
-            <% end %>
+
+          <div class="product-detail-infor">
+            <div class="product-detail-infor__title">
+              <span><%= t("view.product_detail.product_info") %></span>
+            </div>
+            <%= render "product_detail", details: product_details(@product) %>
+          </div>
+
+          <div class="similar-product-title">
+            <span><%= t("view.product_detail.similar_products") %></span>
+          </div>
+          <div class="similar-product-group">
+            <%= render partial: "shared/product_item", collection: @similar_products, as: :product %>
           </div>
         </div>
 
-        <div class="product-image-group">
-          <div class="product-image-group__left">
-
-            <div class="image-list-group">
-              <div class="image-list-group__img">
-                <%= image_tag "product_image.png" , class: "product-image" %>
-              </div>
-
-              <div class="image-list-group__small">
-                <% Settings.default.view.product_detail.star_count.times do %>
-                  <div class="img-small">
-                    <%= image_tag "product_image.png" , class: "product-image" %>
-                  </div>
-                <% end %>
-              </div>
-            </div>
-
-            <div class="product-detail-infor">
-              <div class="product-detail-infor__title">
-                <span><%= t("view.product_detail.product_info") %></span>
-              </div>
-              <%= render "product_detail" , details: product_details(@product) %>
-            </div>
-
-            <div class="similar-product-title">
-              <span><%= t("view.product_detail.similar_products") %></span>
-            </div>
-
-            <div class="similar-product-group">
-              <%= render partial: "shared/product_item", collection: @similar_products, as: :product %>
-            </div>
+        <div class="product-image-group__right">
+          <div class="product-price-group">
+            <span class="current-price"><%= discounted_price(@product[:price].to_i, @product[:discount]) %>đ</span>
+            <span class="original-price"><%= product_price(@product[:price]) %>đ</span>
           </div>
-          <div class="product-image-group__right">
-            <div class="product-price-group">
-              <span class="current-price">
-                <%= discounted_price(@product[:price].to_i, @product[:discount]) %>đ
-              </span>
-              <span class="original-price">
-                <%= product_price(@product[:price]) %>đ
-              </span>
+
+          <div class="select-color-group">
+            <div class="select-color-group__title">
+              <span><%= t("view.product_detail.select_color") %></span>
             </div>
-
-            <div class="select-color-group">
-              <div class="select-color-group__title">
-                <span><%= t("view.product_detail.select_color") %></span>
-              </div>
-
-              <div class="product-color-btn-group">
-                <div class="product-color-btn">
-                  <div class="product-color-btn__img">
-                    <%= image_tag "product_image.png" , class: "product-image" %>
-                  </div>
-                  <div class="product-color-btn__title">
-                    <span class="color-title">
-                      <%= @product.color %>
-                    </span>
-                    <span class="color-price">
-                      <%= discounted_price(@product[:price].to_i, @product[:discount]) %>đ
-                    </span>
-                  </div>
-                  <div class="icon-tick-gr">
-                    <%= bootstrap_icon "check-lg" , height: Settings.default.view.product_detail.icon_check, class:"check-icon" %>
-                  </div>
+            <div class="product-color-btn-group">
+              <div class="product-color-btn">
+                <div class="product-color-btn__img">
+                  <%= image_tag "product_image.png", class: "product-image" %>
+                </div>
+                <div class="product-color-btn__title">
+                  <span class="color-title"><%= @product.color %></span>
+                  <span class="color-price"><%= discounted_price(@product[:price].to_i, @product[:discount]) %>đ</span>
+                </div>
+                <div class="icon-tick-gr">
+                  <%= bootstrap_icon "check-lg", height: Settings.default.view.product_detail.icon_check, class: "check-icon" %>
                 </div>
               </div>
             </div>
+          </div>
 
-            <div class="buy-cart-btn-group">
-              <div class="buy-cart-btn-group__buy">
+          <div class="buy-cart-btn-group">
+            <div class="buy-cart-btn-group__buy">
+              <%= button_to cart_user_path(current_user, product_id: @product.id), method: :post do %>
                 <span><%= t("view.product_detail.buy_now_upcase") %></span>
-              </div>
-              <div class="buy-cart-btn-group__cart">
-                <%= bootstrap_icon "cart-plus" , height: Settings.default.view.product_detail.icon_size, class:"check-icon" %>
-                  <span><%= t("view.product_detail.add_to_cart") %></span>
-              </div>
+              <% end %>
             </div>
-
-            <div class="installment-btn">
-              <span class="title"><%= t("view.product_detail.installment") %> 0%</span>
-              <span class="sub-title"><%= t("view.product_detail.prepayment_from") %> <%= installment_price @product.price %>đ</span>
+            <div class="buy-cart-btn-group__cart">
+              <%= button_to cart_user_path(current_user, product_id: @product.id), method: :post, class: "buy-cart-btn-group__cart" do %>
+                <%= bootstrap_icon "cart-plus", height: Settings.default.view.product_detail.icon_size, class: "check-icon" %>
+                <span><%= t("view.product_detail.add_to_cart") %></span>
+              <% end %>
             </div>
+          </div>
 
-            <div class="benefits-section">
-              <div class="benefits-section__title">
-                <span><%= t("view.product_detail.additional_offers") %></span>
-              </div>
-              <ul class="benefits-section__list">
-                <% benefits_list.each do |benefit| %>
-                  <li class="benefits-section__item">
-                    <%= benefit %>
-                  </li>
-                  <% end %>
-              </ul>
+          <div class="installment-btn">
+            <span class="title"><%= t("view.product_detail.installment") %> 0%</span>
+            <span class="sub-title"><%= t("view.product_detail.prepayment_from") %> <%= installment_price @product.price %>đ</span>
+          </div>
+
+          <div class="benefits-section">
+            <div class="benefits-section__title">
+              <span><%= t("view.product_detail.additional_offers") %></span>
             </div>
+            <ul class="benefits-section__list">
+              <% benefits_list.each do |benefit| %>
+                <li class="benefits-section__item"><%= benefit %></li>
+              <% end %>
+            </ul>
+          </div>
 
-            <div class="product-attribute-group">
-              <div class="product-attribute-group__title">
-                <span><%= t("view.product_detail.specifications") %></span>
-              </div>
-              <div class="product-attribute-group__items">
-                <% @product.load_attributes.each do |pa| %>
-                  <div class="product-attribute-item">
-                    <span class="product-attribute-item__title">
-                      <%= pa.attribute_group.attribute_name %>
-                    </span>
-                    <span class="product-attribute-item__value">
-                      <%= pa.value %>
-                    </span>
-                  </div>
-                <% end %>
-              </div>
+          <div class="product-attribute-group">
+            <div class="product-attribute-group__title">
+              <span><%= t("view.product_detail.specifications") %></span>
+            </div>
+            <div class="product-attribute-group__items">
+              <% @product.load_attributes.each do |pa| %>
+                <div class="product-attribute-item">
+                  <span class="product-attribute-item__title"><%= pa.attribute_group.attribute_name %></span>
+                  <span class="product-attribute-item__value"><%= pa.value %></span>
+                </div>
+              <% end %>
             </div>
           </div>
         </div>

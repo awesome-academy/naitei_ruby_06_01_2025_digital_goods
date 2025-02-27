@@ -8,6 +8,7 @@ en:
     order: "Order"
     order_lookup: "Order Lookup"
     products: "Product List"
+    orders: "Order List"
   view:
     header: 
       category: "Category"
@@ -167,6 +168,17 @@ en:
         no_data_display: "No data to display"
         filter_by: "Filter by"
         no_data: "No data"
+      order:
+        order_status: "Order Status"
+        all: "All"
+        order_code: "Order Code"
+        recipient: "Recipient"
+        phone_number: "Phone Number"
+        address: "Address"
+        status: "Status"
+        details: "Details"
+        delivering_to_customer: "Delivering to Customer"
+        order_list: "Order List"
   form:
     label:
       user:

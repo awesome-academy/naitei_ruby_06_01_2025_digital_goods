@@ -1,0 +1,95 @@
+﻿<% provide(:title, t("title.orders") ) %>
+<div class="orders-management">
+  <div class="orders-management__container">
+    <div class="orders-management__content">
+      <div class="orders-management__content-left">
+        <div class="menu__list">
+          <%= render partial: "shared/sidebar_item" , collection: admin_page_menu, as: :item %>
+        </div>
+      </div>
+      <div class="orders-management__content-right">
+        <div class="content-box">
+          <div class="welcome__content">
+            <div class="welcome__avatar">
+              <%= image_tag "ship_logo.png" , alt: "cps-icon" , class: "welcome__avatar-img" %>
+            </div>
+            <div class="welcome__member">
+              <p class="welcome__member-name">
+                <%= current_user.full_name %>
+              </p>
+              <div class="welcome__member-info">
+                <p class="welcome__phone">
+                  <%= current_user.telephone %>
+                </p>
+              </div>
+            </div>
+          </div>
+          <div class="orders-management-group__title">
+            <span class="title">
+              <%= t("view.admin.order.order_status") %>
+            </span>
+          </div>
+          <div class="stats-menu">
+            <div class="stats-menu__container">
+              <div class="stats-menu__item stats-menu__item--border">
+                <p class="stats-menu__number"><%= Order.count %></p>
+                <p class="stats-menu__label"><%= t("view.admin.order.all") %></p>
+              </div>
+              <% order_status_admin.each_with_index do |(status, data), index| %>
+                <div class="stats-menu__item <%= 'stats-menu__item--border' if index < order_status_admin.size - 1 %>">
+                  <p class="stats-menu__number"><%= @order_counts[status.to_s] || 0 %></p>
+                  <p class="stats-menu__label"><%= data[:label] %></p>
+                </div>
+              <% end %>
+            </div>
+          </div>
+          <div class="orders-management-group">
+            <div class="orders-management-group__title">
+              <span class="title">
+                <%= t("view.admin.order.order_list") %>
+              </span>
+            </div>
+
+            <div class="search-form-group">
+              <%= form_with url: "#" , method: :get, local: true, class: "search-form" do |f| %>
+                <span class="icon-search">
+                  <%= bootstrap_icon "search" , height: Settings.default.view.admin.search_icon_size %>
+                </span>
+                <%= f.text_field :search, class: "input-search" , placeholder: t("view.admin.product.search_product") %>
+                  <% end %>
+            </div>
+            <div class="filter-group" id="filter-group">
+              <div class="icon-filter">
+                <%= bootstrap_icon "filter" , height: Settings.default.view.admin.filter_icon_size, class:"filter" %>
+              </div>
+              <div class="filter-container" id="filter-container">
+                <span class="text_filter" id="text_filter" ><%= @text_filter%></span>
+                <%= bootstrap_icon "chevron-down", height: Settings.default.view.admin.arrow_icon_size %>
+                <% if order_status_admin.present? %>
+                    <div class="list-categories">
+                      <%= form_with url: admin_orders_path, method: :get, data: { turbo_stream: true } do %>
+                        <%= submit_tag t("view.admin.order.all"), class: "item-category select-item" %>
+                      <% end %>
+                      <% order_status_admin.each do |status, data| %>
+                        <%= form_with url: admin_orders_path, method: :get, data: { turbo_stream: true } do %>
+                          <%= hidden_field_tag :status, status %>
+                          <%= submit_tag data[:label], class: "item-category select-item" %>
+                        <% end %>
+                      <% end %>
+                    </div>
+                  <% else %>
+                    <div class="list-categories">
+                      <span>
+                        <%= t("view.admin.product.no_data") %>
+                      </span>
+                    </div>
+                  <% end %>
+              </div>
+            </div>
+            <%= render partial: "order_table", locals: { orders: @orders } %>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

@@ -193,6 +193,7 @@
     }
 
     .header__profile {
+      position: relative;
       .profile-group {
         align-items: center;
         background-color: $gray-light-color-5;
@@ -205,8 +206,45 @@
         min-width: 70px;
         height: 80%;
         padding: 3px;
-        position: relative;
         transition: all .2slinear;
+      }
+
+      .account-menu {
+        z-index: 10000;
+        position: absolute;
+        display: none;
+        flex-direction: column;
+        justify-content: start;
+        align-items: start;
+        top: 50px;
+        left: 0px;
+        background: $white-color;
+        width: 120px;
+        border-radius: 5px !important;
+        box-shadow: 0 -4px 20px -1px $box-shadow-color-4;
+
+        form {
+          width: 100%;
+        }
+
+        button {
+          width: 100%;
+          font-size: 13px;
+          padding: 3px 4px;
+          cursor: pointer;
+          color: $black-color-2;
+          height: 28px;
+          border: none;
+          background: $white-color;
+
+          &:hover {
+            background: $menu-hover-color;
+          }
+        }
+      }
+
+      .active {
+        display: flex;
       }
     }
   }
