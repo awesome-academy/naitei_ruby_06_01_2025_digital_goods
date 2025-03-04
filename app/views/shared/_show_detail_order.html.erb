@@ -3,7 +3,7 @@
     <div class="order-code-info">
       <span><%= t("view.admin.order.order_code") %> <%= order.id %></span>
       <div class="btn-update" id="btn-update-<%= order.id %>">
-        <%= current_user.admin? ? order_status_tag_update(order) : order_status_data(order.status) %>
+        <%= current_user.admin? ? order_status_tag_update(order) : order_status_tag(order) %>
       </div>
     </div>
     <div class="order-tracking" id="order-tracking-<%= order.id %>">

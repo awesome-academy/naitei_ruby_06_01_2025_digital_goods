@@ -20,7 +20,7 @@
           <td id="detail-btn-<%= order.id %>"><%= order_status_tag_admin(order) %></td>
           <td>
             <%= link_to t("view.admin.order.details"), admin_order_path(order), 
-                        class: "btn btn-primary detail-btn", 
+                        class: "btn btn-primary detail-btn open-model-btn", 
                         data: { turbo_stream: true, turbo_method: :get, order_id: order.id }, 
                         remote: true %>
           </td>

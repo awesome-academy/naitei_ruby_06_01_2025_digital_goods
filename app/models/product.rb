@@ -11,6 +11,15 @@ class Product < ApplicationRecord
   has_many :categories, through: :product_categories, source: :category
   has_many :product_attribute_groups, through: :product_attributes,
                                     source: :attribute_group
+
+  PRODUCT_PARAMS = %i(
+    product_title description price discount color stock_quantity
+  ).freeze
+
+  PRODUCT_DETAIL_PARAMS = %i(
+    device_condition warranty accessories vat
+  ).freeze
+
   scope :product_by_subcategories, lambda {|category_path|
                                      joins(:categories)
                                        .where(categories: {path: Category
