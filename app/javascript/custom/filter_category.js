@@ -11,6 +11,12 @@ function initializeFilterContainers() {
 
     container.removeEventListener('click', toggleFilter);
     container.addEventListener('click', toggleFilter);
+    
+    const selectItems = container.querySelectorAll('.item-category');
+    selectItems.forEach(item => {
+      item.removeEventListener('click', updateTextField);
+      item.addEventListener('click', updateTextField);
+    });
   });
 
   document.removeEventListener('click', closeDropdown);
@@ -25,6 +31,16 @@ function toggleFilter(event) {
   if (listCategories) {
     listCategories.classList.toggle('active');
   }
+}
+
+function updateTextField(event) {
+  const selectedText = event.target.value;
+  const container = event.target.closest('.filter-container');
+  const textField = container.querySelector('.text_field');
+  if (textField) {
+    textField.textContent = selectedText;
+  }
+  closeDropdown(event)
 }
 
 function closeDropdown(event) {

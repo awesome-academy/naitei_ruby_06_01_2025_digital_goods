@@ -29,6 +29,8 @@ Rails.application.routes.draw do
     namespace :admin do 
       resources :products
       resources :orders
+      get :category, to: "products#select_category"
+      post :category, to: "products#save_category_session"
     end
   end
 end

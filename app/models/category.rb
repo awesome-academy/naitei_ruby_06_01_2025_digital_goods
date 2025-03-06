@@ -12,4 +12,13 @@ class Category < ApplicationRecord
   }
 
   scope :find_category_name, ->(path){where(path:).pick(:name)}
+
+  scope :children_of, lambda {|path, level|
+    where("path LIKE ? AND level = ?",
+          "#{path}/%", level + 1)
+  }
+
+  def subcategories
+    self.class.children_of(path, level)
+  end
 end

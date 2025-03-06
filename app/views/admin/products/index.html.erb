@@ -1,67 +1,67 @@
-<% provide(:title, t("title.products") ) %>
-  <div class="list-product-page">
-    <div class="list-product-page__container">
-      <div class="list-product-page__content">
-        <div class="list-product-page__content-left">
-          <div class="menu__list">
-            <%= render partial: "shared/sidebar_item", collection: admin_page_menu, as: :item %>
-          </div>
+<% provide(:title, t("title.products")) %>
+<div class="list-product-page">
+  <div class="list-product-page__container">
+    <div class="list-product-page__content">
+      <div class="list-product-page__content-left">
+        <div class="menu__list">
+          <%= render partial: "shared/sidebar_item", collection: admin_page_menu, as: :item %>
         </div>
+      </div>
 
-        <div class="list-product-page__content-right">
-          <div class="content-box">
-            <div class="welcome__content">
-              <div class="welcome__avatar">
-                <%= image_tag "ship_logo.png", alt: "cps-icon", class: "welcome__avatar-img" %>
-              </div>
-
-              <div class="welcome__member">
-                <p class="welcome__member-name"><%= current_user.full_name %></p>
-
-                <div class="welcome__member-info">
-                  <p class="welcome__phone"><%= current_user.telephone %></p>
-                </div>
-              </div>
+      <div class="list-product-page__content-right">
+        <div class="content-box">
+          <div class="welcome__content">
+            <div class="welcome__avatar">
+              <%= image_tag "ship_logo.png", alt: "cps-icon", class: "welcome__avatar-img" %>
             </div>
 
-            <div class="stats-menu">
-              <div class="stats-menu__container">
-                <div class="stats-menu__item item-1">
-                  <p class="stats-menu__number"><%= @total_stock %></p>
-                  <p class="stats-menu__label"><%= t("view.admin.product.stock_quantity") %></p>
-                </div>
+            <div class="welcome__member">
+              <p class="welcome__member-name"><%= current_user.full_name %></p>
 
-                <div class="stats-menu__item">
-                  <p class="stats-menu__number"><%= @sold_out_count %></p>
-                  <p class="stats-menu__label"><%= t("view.admin.product.out_of_stock") %></p>
-                </div>
+              <div class="welcome__member-info">
+                <p class="welcome__phone"><%= current_user.telephone %></p>
               </div>
             </div>
+          </div>
 
-            <div class="list-products-group">
-              <div class="list-products-group__title">
-                <span class="title">
-                  <%= t("view.admin.product.product_list") %>
+          <div class="stats-menu">
+            <div class="stats-menu__container">
+              <div class="stats-menu__item item-1">
+                <p class="stats-menu__number"><%= @total_stock %></p>
+                <p class="stats-menu__label"><%= t("view.admin.product.stock_quantity") %></p>
+              </div>
+
+              <div class="stats-menu__item">
+                <p class="stats-menu__number"><%= @sold_out_count %></p>
+                <p class="stats-menu__label"><%= t("view.admin.product.out_of_stock") %></p>
+              </div>
+            </div>
+          </div>
+
+          <div class="list-products-group">
+            <div class="list-products-group__title">
+              <span class="title">
+                <%= t("view.admin.product.product_list") %>
+              </span>
+            </div>
+
+            <div class="search-form-group">
+              <%= form_with url: "#", method: :get, local: true, class: "search-form" do |f| %>
+                <span class="icon-search">
+                  <%= bootstrap_icon "search", height: Settings.default.view.admin.search_icon_size %>
                 </span>
-              </div>
+                <%= f.text_field :search, class: "input-search", placeholder: t("view.admin.product.search_product") %>
+              <% end %>
+            </div>
 
-              <div class="search-form-group">
-                <%= form_with url: "#", method: :get, local: true, class: "search-form" do |f| %>
-                  <span class="icon-search">
-                    <%= bootstrap_icon "search", height: Settings.default.view.admin.search_icon_size %>
-                  </span>
-                  <%= f.text_field :search, class: "input-search", placeholder: t("view.admin.product.search_product") %>
-                    <% end %>
-              </div>
-
+            <div class="btn-group">
               <div class="filter-group" id="filter-group">
                 <div class="icon-filter">
-                  <%= bootstrap_icon "filter", height: Settings.default.view.admin.filter_icon_size, class:"filter" %>
+                  <%= bootstrap_icon "filter", height: Settings.default.view.admin.filter_icon_size, class: "filter" %>
                 </div>
 
                 <div class="filter-container" id="filter-container-1">
-                  <%= render partial: "admin/products/category_filter", locals: { text_field_content:
-                    @category_lv1_name ||t("view.admin.product.select_category") , categories: @categories_lv1 } %>
+                  <%= render partial: "admin/products/category_filter", locals: { text_field_content: @category_lv1_name || t("view.admin.product.select_category"), categories: @categories_lv1 } %>
                 </div>
 
                 <div class="filter-container" id="filter-container-2">
@@ -82,10 +82,82 @@
                   </div>
                 </div>
               </div>
-              <%= render partial: "admin/products/product_table", locals: { products: @products } %>
+
+              <div class="btn btn-primary add_product_btn open-model-btn">
+                <%= t("view.admin.product.add_product") %>
+              </div>
             </div>
+            <%= render partial: "admin/products/product_table", locals: { products: @products } %>
           </div>
         </div>
       </div>
     </div>
   </div>
+
+  <div class="list-product-page__add-product model-container">
+    <div class="add_product-container">
+      <div class="title-group">
+        <span></span>
+        <span><%= t("view.admin.product.add_product") %></span>
+        <%= bootstrap_icon "x", height: Settings.default.view.admin.close_model_size, class: "icon-x" %>
+      </div>
+      <div class="form-add-product-group">
+        <div class="show-processing-form">
+          <% product_form_steps.each_with_index do |step, index| %>
+            <div class="tracking-step">
+              <div class="icon">
+                <%= bootstrap_icon step[:icon], height: Settings.default.view.order_lookup.status_icon_size, class: "status-icon" %>
+              </div>
+              <div class="text">
+                <%= step[:label] %>
+              </div>
+            </div>
+            <% if index < product_form_steps.size - 1 %>
+              <div class="tracking-line"></div>
+            <% end %>
+          <% end %>
+        </div>
+
+        <%= form_with(scope: "product", local: true, class: "form-input-product-info") do |f| %>
+          <%= render "shared/error_messages", object: f.object %>
+
+          <div class="form-step form-info-group">
+            <% product_basic_info_fields.each do |field| %>
+              <%= render partial: "shared/form_field", locals: { f: f, field_name: field[:name], field_type: field[:type], step: field[:step], min: field[:min] } %>
+            <% end %>
+          </div>
+
+          <div class="form-step form-product-detail-group">
+            <% product_detail_fields.each do |field| %>
+              <%= render partial: "shared/form_field", locals: { f: f, field_name: field[:name], field_type: field[:type], step: field[:step], min: field[:min] } %>
+            <% end %>
+          </div>
+
+          <div class="form-step form-select-attributes">
+            <% @attributes.each do |attribute| %>
+              <div class="title-attribute">
+                <span><%= attribute[:attribute_name] %></span>
+              </div>
+              <%= text_field_tag "product[attributes][#{attribute[:id]}]", nil, class: "form-control" %>
+            <% end %>
+          </div>
+        <% end %>
+
+        <div class="form-step form-select-categories">
+          <div class="title-categories-group">
+            <span><%= t("view.admin.product.select_category") %></span>
+            <div class="filter-container">
+              <%= render partial: "category_select", locals: { text_field_content: @category_lv1_name || t("view.admin.product.select_category"), categories: @categories_lv1, level: 1 } %>
+            </div>
+          </div>
+          <div class="subcategories-group" id="subcategories-group"></div>
+        </div>
+
+        <div class="btn-submit-group">
+          <div class="cancel-btn btn-action"><%= t("view.admin.product.back") %></div>
+          <div class="continue-btn btn-action"><%= t("view.admin.product.continue") %></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,15 @@
+﻿<turbo-stream action="replace" target="subcategories-group" data-action="element">
+  <template>
+    <div class="subcategories-group" id="subcategories-group">
+      <% @subcategories.each do |category| %>
+      <div class="subcategories-select-group">
+        <span class="title-subcategoies"><%= category.name %></span>
+        <div class="filter-container" id="filter-container-1">
+          <%= render partial: "category_select", locals: { text_field_content:
+            t("view.admin.product.sort_by") , categories: category.subcategories, level: 3 }, formats: [:html] %>
+        </div>
+      </div>
+    <% end %>
+    </div>
+  </template>
+</turbo-stream>
