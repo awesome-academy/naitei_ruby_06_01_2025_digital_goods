@@ -1,0 +1,24 @@
+<% provide(:title, t("title.resend_unlock")) %>
+<div class="form-email-input">
+  <div class="form-email-input__container">
+    <div class="digihub_logo">
+      <%= image_tag "digihub_logo.png", alt: "DigiHub Logo" %>
+    </div>
+
+    <%= form_for(resource, as: resource_name, url: unlock_path(resource_name), html: { method: :post }) do |f| %>
+      <%= render "devise/shared/error_messages", object: f.object %>
+
+      <div class="form-group">
+        <%= f.label :email, t("form.label.user.email") %>
+        <%= f.email_field :email, class: "form-control", placeholder: t("form.placeholder.email"), autofocus: true, autocomplete: "email" %>
+      </div>
+
+      <%= f.submit t("view.resend_unlock.submit"), class: "btn btn-submit" %>
+
+      <div class="options">
+        <%= link_to t("view.sign_in.title"), new_session_path(resource_name), class: "sign-in-link" %>
+      </div>
+      <%= render "devise/shared/links" %>
+    <% end %>
+  </div>
+</div>

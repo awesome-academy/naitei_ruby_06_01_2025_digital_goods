@@ -8,6 +8,7 @@ gem "bootsnap", require: false
 gem "bootstrap-icons-helper"
 gem "bootstrap-sass", "3.4.1"
 gem "config"
+gem "devise"
 gem "faker", "2.21.0"
 gem "figaro", "~> 1.2"
 gem "font-awesome-sass"

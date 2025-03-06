@@ -65,20 +65,20 @@
       <% end %>
 
       <div class="header__profile" id="account">
-        <%= link_to (logged_in? ? "#" : login_path), class: "profile-group" do %>
+        <%= link_to (user_signed_in? ? "#" : new_user_session_path), class: "profile-group" do %>
           <%= bootstrap_icon "person-circle", height: Settings.default.view.header.icon_size %>
           <div class="title-group">
-            <% if logged_in? %>
+            <% if user_signed_in? %>
               <span><%= current_user.user_name %></span>
             <% else %>
               <span><%= t("title.sign_in") %></span>
             <% end %>
           </div>
         <% end %>
-        <% if logged_in? %>
+        <% if user_signed_in? %>
           <div class="account-menu" id="account-menu">
             <%= button_to "Profile", orders_users_path, method: :get, class: "account-menu__profile", form: { data: { turbo: true } } %>
-            <%= button_to "Logout", logout_path, method: :delete, class: "account-menu__logout", form: { data: { turbo: true } } %>
+            <%= button_to "Logout", destroy_user_session_path, method: :delete, class: "account-menu__logout", form: { data: { turbo: true } } %>
           </div>
         <% end %>
       </div>

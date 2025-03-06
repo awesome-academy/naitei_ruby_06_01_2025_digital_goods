@@ -2,6 +2,7 @@ class ApplicationController < ActionController::Base
   before_action :set_locale
   protect_from_forgery with: :exception
   include SessionsHelper
+  include DeviseHelper
 
   private
 
@@ -22,7 +23,7 @@ class ApplicationController < ActionController::Base
   end
 
   def logged_in_user
-    return if logged_in?
+    return if user_signed_in?
 
     store_location
     flash[:danger] = t "flash.please_log_in"

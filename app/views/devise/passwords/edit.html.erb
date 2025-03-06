@@ -1,0 +1,32 @@
+<% provide(:title, t("title.change_password")) %>
+<div class="form-email-input">
+  <div class="form-email-input__container">
+    <div class="digihub_logo">
+      <%= image_tag "digihub_logo.png", alt: "DigiHub Logo" %>
+    </div>
+
+    <%= form_for(resource, as: resource_name, url: password_path(resource_name), html: { method: :put }) do |f| %>
+      <%= render "devise/shared/error_messages", object: f.object %>
+      <%= f.hidden_field :reset_password_token %>
+
+      <div class="form-group">
+        <%= f.label :password, t("form.label.user.new_password") %>
+        <%= f.password_field :password, class: "form-control", placeholder: t("form.placeholder.new_password"), autofocus: true, autocomplete: "new-password" %>
+        <% if @minimum_password_length %>
+          <span class="form-text">(<%= t("form.hint.minimum_length", length: @minimum_password_length) %>)</span>
+        <% end %>
+      </div>
+
+      <div class="form-group">
+        <%= f.label :password_confirmation, t("form.label.user.confirm_new_password") %>
+        <%= f.password_field :password_confirmation, class: "form-control", placeholder: t("form.placeholder.confirm_new_password"), autocomplete: "new-password" %>
+      </div>
+
+      <%= f.submit t("view.change_password.submit"), class: "btn btn-submit" %>
+
+      <div class="options">
+        <%= link_to t("view.sign_in.title"), new_session_path(resource_name), class: "sign-in-link" %>
+      </div>
+    <% end %>
+  </div>
+</div>

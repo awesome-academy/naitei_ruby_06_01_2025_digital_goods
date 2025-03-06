@@ -9,6 +9,10 @@ vi:
     order_lookup: "Tra cứu đơn hàng"
     products: "Danh sách sản phẩm"
     orders: "Danh sách đơn hàng"
+    forgot_password: "Quên mật khẩu"
+    change_password: "Đổi Mật Khẩu"
+    resend_unlock: "Gửi Lại Hướng Dẫn Mở Khóa"
+    resend_confirmation: "Gửi Lại Hướng Dẫn Xác Nhận"
   view:
     header: 
       category: "Danh mục"
@@ -152,6 +156,14 @@ vi:
         admin_list: "Danh sách Admin"
         user_list: "Danh sách người dùng"
         logout: "Thoát tài khoản"
+    forgot_password:
+      submit: "Gửi hướng dẫn đặt lại mật khẩu"
+    change_password:
+      submit: "Đổi Mật Khẩu"
+    resend_unlock:
+      submit: "Gửi Lại Hướng Dẫn Mở Khóa"
+    resend_confirmation:
+      submit: "Gửi Lại Hướng Dẫn Xác Nhận"
     admin:
       product:
         stock_quantity: "Số lượng sản phẩm còn trong kho"
@@ -204,6 +216,8 @@ vi:
         password: "Mật khẩu"
         password_confirmation: "Nhập lại mật khẩu"
         newsletter: "Đăng ký nhận bản tin khuyến mãi từ DigiHub"
+        new_password: "Mật Khẩu Mới"
+        confirm_new_password: "Xác Nhận Mật Khẩu Mới"
       product:
         product_title: "Tiêu đề sản phẩm"
         description: "Mô tả"
@@ -232,6 +246,10 @@ vi:
       warranty: "Nhập thông tin bảo hành"
       accessories: "Liệt kê các phụ kiện đi kèm"
       vat: "Nhập phần trăm VAT"
+      new_password: "Nhập mật khẩu mới"
+      confirm_new_password: "Xác nhận mật khẩu mới"
+    hint:
+      minimum_length: "Tối thiểu %{length} ký tự"
   messages:
     email_notice: "Hóa đơn VAT khi mua hàng sẽ được gửi qua email này"
     password_notice: "(*) Mật khẩu tối thiểu 8 ký tự"
@@ -272,3 +290,21 @@ vi:
       please_select_product: "Vui lòng chọn sản phẩm"
     order_lookup:
       order_not_found: "Không tìm thấy đơn hàng hoặc số điện thoại không đúng."
+  mailer:
+    confirmation:
+      subject: "Xác nhận tài khoản của bạn"
+      greeting: "Chào mừng %{email}!"
+      message: "Bạn có thể xác nhận email tài khoản của mình bằng liên kết bên dưới:"
+      confirm_link: "Xác nhận tài khoản"
+    reset_password:
+      subject: "Đặt lại mật khẩu của bạn"
+      greeting: "Xin chào %{email}!"
+      request_message: "Ai đó đã yêu cầu một liên kết để thay đổi mật khẩu của bạn. Bạn có thể làm điều đó bằng liên kết bên dưới."
+      change_link: "Đổi mật khẩu của tôi"
+      ignore_message: "Nếu bạn không yêu cầu điều này, vui lòng bỏ qua email này."
+      security_notice: "Mật khẩu của bạn sẽ không thay đổi cho đến khi bạn truy cập vào liên kết trên và tạo mật khẩu mới."
+    unlock:
+      subject: "Mở khóa tài khoản của bạn"
+      greeting: "Xin chào %{email}!"
+      lock_message: "Tài khoản của bạn đã bị khóa do có quá nhiều lần đăng nhập không thành công."
+      unlock_link_text: "Mở khóa tài khoản của tôi"

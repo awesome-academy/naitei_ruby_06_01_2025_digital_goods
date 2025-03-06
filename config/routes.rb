@@ -1,14 +1,17 @@
 Rails.application.routes.draw do
   scope "(:locale)", locale: /en|vi/ do
     root "static_pages#home"
-    get "/signup", to: "users#new"
-    post "/signup", to: "users#create"
-    get "/login", to: "sessions#new"
-    post "/login", to: "sessions#create"
+    devise_for :users, controllers: { 
+      registrations: "users/registrations",
+      sessions: "users/sessions",
+    }, path: "", path_names: {
+      sign_up: "signup",
+      sign_in: "login",
+      sign_out: "logout"
+    }
     get "/product_detail/:id", to: "products#show"
     get "/order-lookup", to: "orders#show_track"
     get "/order-track", to: "orders#find_order"
-    delete "/logout",  to: "sessions#destroy", as: 'logout'
 
     resources :users do
       member do
