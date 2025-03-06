@@ -1,4 +1,8 @@
 class User < ApplicationRecord
+  devise :database_authenticatable, :registerable,
+         :recoverable, :rememberable, :validatable,
+         :confirmable, :lockable
+
   has_many :user_addresses, dependent: :destroy
   has_many :orders, dependent: :destroy
   has_many :cart_items, dependent: :destroy
@@ -49,8 +53,6 @@ class User < ApplicationRecord
             length: {minimum: Settings.default.user.validate
                                       .password.minLength},
             allow_nil: true
-
-  has_secure_password
 
   class << self
     def digest string

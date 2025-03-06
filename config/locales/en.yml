@@ -9,6 +9,10 @@ en:
     order_lookup: "Order Lookup"
     products: "Product List"
     orders: "Order List"
+    forgot_password: "Forgot Password"
+    change_password: "Change Your Password"
+    resend_unlock: "Resend Unlock Instructions"
+    resend_confirmation: "Resend Confirmation Instructions"
   view:
     header: 
       category: "Category"
@@ -152,6 +156,14 @@ en:
         admin_list: "Admin List"
         user_list: "User List"
         logout: "Log Out"
+    forgot_password:
+      submit: "Send me reset password instructions"
+    change_password:
+      submit: "Change My Password"
+    resend_unlock:
+      submit: "Resend Unlock Instructions"
+    resend_confirmation:
+      submit: "Resend Confirmation Instructions"
     admin:
       product:
         stock_quantity: "Remaining stock quantity"
@@ -203,7 +215,9 @@ en:
         email: "Email"
         password: "Password"
         password_confirmation: "Confirm Password"
-        newsletter: "Subscribe to promotional newsletters from CellphoneS"
+        newsletter: "Subscribe to promotional newsletters from Digihub"
+        new_password: "New Password"
+        confirm_new_password: "Confirm New Password"
       product:
         product_title: "Product Title"
         description: "Description"
@@ -232,6 +246,10 @@ en:
       warranty: "Enter warranty details"
       accessories: "List included accessories"
       vat: "Enter VAT percentage"
+      new_password: "Enter new password"
+      confirm_new_password: "Confirm your new password"
+    hint:
+      minimum_length: "%{length} characters minimum"
   messages:
     email_notice: "VAT invoices for purchases will be sent to this email."
     password_notice: "(*) Password must be at least 8 characters long"
@@ -272,3 +290,21 @@ en:
       please_select_product: "Please select a product"
     order_lookup:
       order_not_found: "Order not found or incorrect phone number."
+  mailer:
+    confirmation:
+      subject: "Confirm your account"
+      greeting: "Welcome %{email}!"
+      message: "You can confirm your account email through the link below:"
+      confirm_link: "Confirm my account"
+    reset_password:
+      subject: "Reset your password"
+      greeting: "Hello %{email}!"
+      request_message: "Someone has requested a link to change your password. You can do this through the link below."
+      change_link: "Change my password"
+      ignore_message: "If you didn't request this, please ignore this email."
+      security_notice: "Your password won't change until you access the link above and create a new one."
+    unlock:
+      subject: "Unlock your account"
+      greeting: "Hello %{email}!"
+      lock_message: "Your account has been locked due to an excessive number of unsuccessful sign in attempts."
+      unlock_link_text: "Unlock my account"
