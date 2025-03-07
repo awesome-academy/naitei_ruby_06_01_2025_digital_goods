@@ -1,5 +1,7 @@
 ﻿class Admin::OrdersController < ApplicationController
-  before_action :logged_in_user, :admin_user, only: :index
+  before_action :logged_in_user
+  before_action :authorize_admin
+  load_and_authorize_resource only: %i(show update)
   include Admin::OrdersHelper
   include OrdersHelper
   include CartsHelper
@@ -16,7 +18,6 @@
   end
 
   def show
-    @order = find_order_by_id params[:id]
     set_order_details
     respond_to do |format|
       format.turbo_stream
@@ -25,7 +26,6 @@
   end
 
   def update
-    @order = find_order_by_id params[:id]
     after_status = params[:current_status].to_i + 1
     if @order.update(status: after_status)
       respond_to do |format|
@@ -39,16 +39,12 @@
 
   private
 
-  def admin_user
-    redirect_to root_path unless current_user.admin?
+  def authorize_admin
+    authorize! :manage, :all
   end
 
   def filtered_orders
     Order.by_status(params[:status])
-  end
-
-  def find_order_by_id order_code
-    Order.find_by(id: order_code)
   end
 
   def set_order_details

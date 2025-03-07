@@ -4,10 +4,12 @@ class CartsController < ApplicationController
 
   def show
     @cart_products = current_user.cart_products_quantity
+    authorize! :read, CartItem
   end
 
   def create
     @cart_item = find_or_build_cart_item
+    authorize! :create, @cart_item
 
     if @cart_item.save
       redirect_to cart_user_path(current_user)
@@ -20,6 +22,8 @@ class CartsController < ApplicationController
     @cart_item = current_user.cart_items
                              .find_by(product_id: params[:product_id])
     return head :not_found unless @cart_item
+
+    authorize! :update, @cart_item
 
     case params[:operation]
     when "increase"
@@ -39,6 +43,8 @@ class CartsController < ApplicationController
                              .find_by(product_id: params[:product_id])
     return head :not_found unless @cart_item
 
+    authorize! :destroy, @cart_item
+
     product_id = @cart_item.product_id
     @cart_item.destroy
 
@@ -46,10 +52,11 @@ class CartsController < ApplicationController
   end
 
   def update_checked
+    authorize! :update_checked, CartItem
     checked_cart_items = params[:checked_cart_items]&.split(",")&.map(&:to_i)
 
     if checked_cart_items.blank?
-      flash[:waring] = t "flash.cart.select_at_least_one_product"
+      flash[:warning] = t "flash.cart.select_at_least_one_product"
       redirect_to cart_user_path(current_user) and return
     end
 
