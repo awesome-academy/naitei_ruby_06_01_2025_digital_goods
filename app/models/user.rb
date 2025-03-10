@@ -101,6 +101,11 @@ class User < ApplicationRecord
     orders.where(status: status_text)
   end
 
+  def send_devise_notification(notification, *args)
+    UserMailer.with(user: self, token: args.first).send(notification, self,
+                                                        *args).deliver_later
+  end
+
   private
 
   def downcase_email
