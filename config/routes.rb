@@ -1,3 +1,4 @@
+require "sidekiq/web"
 Rails.application.routes.draw do
   scope "(:locale)", locale: /en|vi/ do
     root "static_pages#home"
@@ -35,5 +36,6 @@ Rails.application.routes.draw do
       get :category, to: "products#select_category"
       post :category, to: "products#save_category_session"
     end
+    mount Sidekiq::Web => "/sidekiq"
   end
 end
