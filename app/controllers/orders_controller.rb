@@ -1,5 +1,6 @@
 class OrdersController < ApplicationController
   before_action :logged_in_user, :load_cart_data, only: %i(new create)
+  load_and_authorize_resource only: %i(update destroy)
   include OrdersHelper
   include CartsHelper
 
@@ -8,6 +9,18 @@ class OrdersController < ApplicationController
   end
 
   def create
+    authorize_resources
+    _, success = process_order_creation
+    redirect_after_create success
+  end
+
+  def authorize_resources
+    authorize! :create, Order
+    authorize! :create, OrderItem
+    authorize! :manage, CartItem, user_id: current_user.id
+  end
+
+  def process_order_creation
     order = nil
     success = false
 
@@ -28,12 +41,13 @@ class OrdersController < ApplicationController
       flash[:error] = t("flash.order.error_occurred", error: e.message)
     end
 
-    redirect_after_create success
+    [order, success]
   end
 
   def show_track; end
 
   def history_order
+    authorize! :history_order, Order
     status = Settings.default.order.order_status[params[:status].to_s]
     @user_orders = current_user.orders_by_status(status)
     @current_status = params[:status]
@@ -45,7 +59,7 @@ class OrdersController < ApplicationController
 
   def find_order
     @order = find_order_by_id params[:order_code]
-
+    authorize! :find_order, @order if @order
     if valid_order?
       set_order_details
       respond_to do |format|
@@ -58,9 +72,8 @@ class OrdersController < ApplicationController
   end
 
   def update
-    order = find_order_by_id params[:id]
     after_status = params[:current_status].to_i + 1
-    if order.update(status: after_status)
+    if @order.update(status: after_status)
       handle_successful_update(params[:current_status].to_i)
     else
       flash.now[:error] = t "view.user.update_failed"

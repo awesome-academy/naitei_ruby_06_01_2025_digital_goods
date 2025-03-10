@@ -3,6 +3,7 @@ class ApplicationController < ActionController::Base
   protect_from_forgery with: :exception
   include SessionsHelper
   include DeviseHelper
+  include CanCan::ControllerAdditions
 
   private
 
@@ -28,6 +29,18 @@ class ApplicationController < ActionController::Base
     store_location
     flash[:danger] = t "flash.please_log_in"
     redirect_to login_path
+  end
+
+  rescue_from CanCan::AccessDenied do |exception|
+    respond_to do |format|
+      format.html do
+        flash[:danger] = exception.message
+        redirect_to root_path
+      end
+      format.json do
+        render json: {error: exception.message}, status: :forbidden
+      end
+    end
   end
 
   def correct_user

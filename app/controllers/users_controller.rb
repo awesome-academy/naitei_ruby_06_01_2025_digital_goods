@@ -4,6 +4,7 @@ class UsersController < ApplicationController
   end
 
   def create
+    authorize! :create, User
     @user = User.new(user_params)
     if @user.save
       flash[:success] = t "flash.sign_up.success"

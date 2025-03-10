@@ -7,6 +7,7 @@ gem "bcrypt", "3.1.18"
 gem "bootsnap", require: false
 gem "bootstrap-icons-helper"
 gem "bootstrap-sass", "3.4.1"
+gem "cancancan", "~> 3.5"
 gem "config"
 gem "devise"
 gem "faker", "2.21.0"

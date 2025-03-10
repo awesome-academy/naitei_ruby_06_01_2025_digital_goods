@@ -1,5 +1,6 @@
 class StaticPagesController < ApplicationController
   def home
+    authorize! :read, Product
     load_products
   end
 

@@ -1,11 +1,12 @@
 class ProductsController < ApplicationController
   include StaticPagesHelper
 
+  load_and_authorize_resource only: :show
+
   def show
-    @product = Product.find_by(id: params[:id])
     unless @product
       flash[:alert] = t "view.product_detail.product_not_found"
-      redirect_to root_path
+      redirect_to root_path and return
     end
     @similar_products = Product.similar_products(@product)
   end

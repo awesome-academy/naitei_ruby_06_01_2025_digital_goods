@@ -1,11 +1,12 @@
 class Admin::ProductsController < ApplicationController
-  before_action :logged_in_user, :admin_user, only: :index
+  before_action :logged_in_user
+  before_action :authorize_admin
+  load_and_authorize_resource only: %i(index create)
 
   def index
     set_instance_variables
     set_category_data if @level.between?(1, 3)
     set_products
-
     respond_to do |format|
       format.turbo_stream
       format.html{render "index"}
@@ -17,7 +18,6 @@ class Admin::ProductsController < ApplicationController
       product = create_product_with_details
       create_product_attributes(product)
       create_product_categories(product)
-
       flash[:success] = t("view.admin.product.created_success")
       redirect_to root_path
     rescue ActiveRecord::RecordInvalid => e
@@ -47,16 +47,18 @@ class Admin::ProductsController < ApplicationController
     category_id = params[:category_id].to_i
     category_path = params[:category_path]
     root_prefix_path, new_path_prefix = extract_paths(category_path)
-
     if root_prefix_path.present?
       handle_existing_categories(root_prefix_path, new_path_prefix)
     end
-
     session[:selected_categories] << {id: category_id, path: category_path}
     head :ok
   end
 
   private
+
+  def authorize_admin
+    authorize! :manage, :all
+  end
 
   def set_instance_variables
     @total_stock = Product.total_stock
@@ -77,14 +79,12 @@ class Admin::ProductsController < ApplicationController
 
   def set_category_data
     path_parts = @path.split("/")
-
     if @level < 3
       instance_variable_set("@categories_lv#{@level + 1}",
                             Category.with_level(@level + 1, @path))
     end
     instance_variable_set("@category_lv#{@level}_name",
                           Category.find_category_name(@path))
-
     (@level - 1).downto(1) do |lvl|
       parent_path = path_parts[0..lvl].join("/")
       instance_variable_set("@categories_lv#{lvl + 1}",
@@ -92,10 +92,6 @@ class Admin::ProductsController < ApplicationController
       instance_variable_set("@category_lv#{lvl}_name",
                             Category.find_category_name(parent_path))
     end
-  end
-
-  def admin_user
-    redirect_to root_path unless current_user.admin?
   end
 
   def extract_paths category_path
