@@ -59,5 +59,7 @@ default: &default
       picking: 2
       shipping: 3
       delivered: 4
+  sidekiq:
+    concurrency: 5
 development:
   <<: *default
