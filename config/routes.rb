@@ -36,6 +36,16 @@ Rails.application.routes.draw do
       get :category, to: "products#select_category"
       post :category, to: "products#save_category_session"
     end
+
+    namespace :api do
+      namespace :v1 do
+        resources :orders, only: [:new, :create, :update] do
+          get :history_order, on: :collection
+          get :find_order, on: :collection
+        end
+      end
+    end
+
     mount Sidekiq::Web => "/sidekiq"
   end
 end
